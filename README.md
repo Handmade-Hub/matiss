@@ -4,6 +4,6 @@
 
 ### 2. Install dependencies with `[bun i][https://bun.sh/]`
 
-### 3. Run with `bun start`
+### 3. Run with `gulp watcht`
 
-### 4. For build run `bun duild`
+### 4. For build run `gulp compileSass`
