@@ -4,6 +4,6 @@
 
 ### 2. Install dependencies with `bun i`
 
-### 3. Run with `gulp watcht`
+### 3. Run with `gulp watch`
 
 ### 4. For build run `gulp compileSass`
