@@ -1,0 +1,47 @@
+# Core
+#
+WP/wp-admin/
+WP/wp-content/index.php
+WP/wp-content/languages
+WP/wp-content/plugins/index.php
+WP/wp-content/themes/index.php
+WP/wp-includes/
+WP/index.php
+WP/license.txt
+WP/readme.html
+WP/wp-*.php
+WP/xmlrpc.php
+
+# Configuration
+WP/wp-config.php
+
+# Example themes
+WP/wp-content/themes/twenty*/
+
+# Example plugin
+WP/wp-content/plugins/hello.php
+
+# Uploads
+WP/wp-content/uploads/
+
+# Log files
+WP*.log
+
+# htaccess
+WP/.htaccess
+
+# All plugins
+#
+# Note: If you wish to whitelist plugins,
+# uncomment the next line
+#/wp-content/plugins
+
+# All themes
+#
+# Note: If you wish to whitelist themes,
+# uncomment the next line
+#/wp-content/themes
+
+# Layout files
+Layout/node_modules
+Layout/dist
