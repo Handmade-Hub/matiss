@@ -2,7 +2,7 @@
 
 ### 1. Go into "Layout" folder for pagemaking
 
-### 2. Install dependencies with `[bun i][https://bun.sh/]`
+### 2. Install dependencies with `bun i`
 
 ### 3. Run with `gulp watcht`
 
