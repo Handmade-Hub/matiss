@@ -44,4 +44,4 @@ WP/.htaccess
 
 # Layout files
 Layout/node_modules
-Layout/dist
+Layout/dist/css

@@ -1,0 +1,156 @@
+// root
+:root {
+ --color-primary: #000;
+ --color-secondary: #333;
+ --color-gray: #9A9A9A;
+ --color-tertiary: #CBCBCB;
+ --color-gray-ml: #E4E4E4;
+ --color-gray-l: #F5F5F5;
+ --color-white: #fff;
+ --color-green: #18A164;
+ --color-red: #EB5757;
+ --color-blue: #0047FF;
+ --duration-normal: 0.4s;
+}
+* {
+ box-sizing: border-box;
+}
+html,
+body {
+ height: 100%;
+}
+body {
+ font-family: "Open Sans", sans-serif;
+ font-size: 1.6rem;
+ line-height: 2.4rem;
+ display: flex;
+ flex-direction: column;
+ height: 100%;
+ position: relative;
+ z-index: 1;
+ color: var(--color-primary);
+ @media (min-width: 768px) {
+  font-size: 1.8rem;
+  line-height: 2.6rem;
+ }
+}
+main {
+ flex: 1 0 auto;
+}
+.container {
+ max-width: 1152px;
+ width: 100%;
+ margin: 0 auto;
+ padding: 0 16px;
+ @media (max-width: 1199px) {
+  max-width: calc(var(--page-width) / 1.3229);
+ }
+ @media (max-width: 991px) {
+  max-width: calc(var(--page-width) / 1.7638);
+ }
+ @media (max-width: 767px) {
+  max-width: calc(var(--page-width) / 2.3518);
+ }
+ @media (max-width: 575px) {
+  max-width: 100%;
+ }
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+ font-family: "Raleway", sans-serif;
+}
+h1 {
+ font-size: 3rem;
+ line-height: 4.4rem;
+ @media (min-width: 768px) {
+  font-size: 6.4rem;
+  line-height: 8.3rem;
+ }
+}
+h2 {
+ font-size: 2.8rem;
+ line-height: 3.6rem;
+ @media (min-width: 768px) {
+  font-size: 4.4rem;
+  line-height: 6.6rem;
+ }
+}
+h3 {
+ font-size: 2.4rem;
+ line-height: 3.6rem;
+ @media (min-width: 768px) {
+  font-size: 4rem;
+  line-height: 5.6rem;
+ }
+}
+h4 {
+ font-size: 3.6rem;
+ line-height: 4.7rem;
+}
+h5 {
+ font-size: 3rem;
+ line-height: 3.6rem;
+}
+h6 {
+ font-size: 2.8rem;
+ line-height: 4.2rem;
+}
+a {
+ font-size: 1.6rem;
+ line-height: 2.4rem;
+ color: var(--color-primary);
+ cursor: pointer;
+ text-decoration: none;
+ transition: all var(--duration-normal);
+}
+
+// header
+.header {
+ &__wrapper {
+  background-color: var(--color-primary);
+ }
+ &__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  a {
+   color: var(--color-white);
+  }
+ }
+ &__block {
+  display: flex;
+  align-items: center;
+ }
+ &__logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 2.6rem;
+ }
+ &__menu {}
+ &__list {
+  display: flex;
+  gap: 0.8rem;
+  &_item {
+   padding: 0.8rem 1rem 0.8rem 1.8rem;
+  }
+  &_link {}
+ }
+ &__case {
+  display: flex;
+ }
+ &__tel {}
+ &__localization {
+  &_button {}
+ }
+ &__icons {
+  display: flex;
+ }
+ &__search {}
+ &__wishlist {}
+ &__cart {}
+}
