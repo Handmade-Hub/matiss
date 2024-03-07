@@ -19,7 +19,7 @@ function watch() {
         }
     });
     gulp.watch('src/scss/**/*.scss', compileSass);
-    gulp.watch('src/html/**/*.html').on('change', browserSync.reload);
+    gulp.watch('dist/**/*.html').on('change', browserSync.reload);
 }
 
 exports.compileSass = compileSass;
