@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
  // header drop-down
  if (document.querySelectorAll('.header__drop-down').length) {
   const dropDown = document.querySelectorAll('.header__drop-down');
- 
+
   dropDown.forEach(e => {
    const menu = e.querySelector('.header__drop-down_list');
    e.addEventListener('mouseover', evt => {
@@ -19,11 +19,53 @@ document.addEventListener('DOMContentLoaded', function () {
   });
  }
 
+ // burger menu
+ if (document.querySelectorAll('.header-mobile__wrapper').length) {
+  const button = document.querySelector('.header__burger');
+  const menu = document.querySelector('.header-mobile__wrapper');
+  const close = document.querySelector('.header-mobile__close');
+  const body = document.body;
+
+  button.addEventListener('click', e => {
+   menu.classList.add('menu-open');
+   body.classList.add('menu-open');
+  })
+  close.addEventListener('click', e => {
+   menu.classList.remove('menu-open');
+   body.classList.remove('menu-open');
+  })
+ }
+
+ // mobile drop-down
+ if (document.querySelectorAll('.header-mobile__drop-down_list').length) {
+  const dropDown = document.querySelectorAll('.header-mobile__drop-down');
+
+  dropDown.forEach(item => {
+   const button = item.querySelector('.header-mobile__menu_link.with-arrow');
+   const list = item.querySelector('.header-mobile__drop-down_list')
+   item.addEventListener('click', evt => {
+    if (evt.target == button) {
+     item.classList.toggle('active');
+     item.classList.contains('active') ? list.style.maxHeight = list.scrollHeight + 'px' : list.style.maxHeight = null;
+    }
+   })
+  });
+
+ }
+
  // header localization
  if (document.querySelectorAll('.header__localization').length) {
-  const wrapper = document.querySelectorAll('.header__localization');
-  const buttons = wrapper.querySelectorAll('.header__localization_button');
-  
+  const buttons = document.querySelectorAll('.header__localization_button');
+  buttons.forEach(button => {
+   button.addEventListener('click', e => {
+    if (!button.classList.contains('active')) {
+     buttons.forEach(item => {
+      item.classList.remove('active')
+     });
+     button.classList.add('active');
+    }
+   })
+  })
 
  }
 
@@ -57,6 +99,39 @@ document.addEventListener('DOMContentLoaded', function () {
     el: '.new-collection__swiper-pagination',
    },
   });
+ }
+
+ // achievements numbers counts
+ if (document.querySelectorAll('.achievements__list').length) {
+  const wrapper = document.querySelector('.achievements');
+  const items = document.querySelectorAll('.achievements__item_title span');
+
+  window.addEventListener('scroll', function () {
+   const offset = wrapper.offsetTop;
+   let scrollDistance = window.scrollY;
+   if (offset - scrollDistance <= 400) {
+   }
+  });
+  items.forEach(item => {
+   const number = item.textContent;
+   let i = 0;
+   if (number <= 100) {
+    let counts = setInterval(function () {
+     i++;
+     i > number ? clearInterval(counts) : item.innerText = i;
+    }, 50);
+   } else if (number <= 1000) {
+    let counts = setInterval(function () {
+     i++;
+     i > number ? clearInterval(counts) : item.innerText = i;
+    }, 1);
+   } else {
+    let counts = setInterval(function () {
+     i += 4;
+     i > number ? clearInterval(counts) : item.innerText = i;
+    }, 1);
+   }
+  })
  }
 
  // goal swiper
