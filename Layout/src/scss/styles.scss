@@ -17,6 +17,7 @@
 }
 html {
  font-size: 10px;
+ scroll-behavior: smooth;
 }
 html,
 body {
@@ -45,6 +46,7 @@ main {
  overflow: hidden;
 }
 .container,
+.map__dots,
 .banner__swiper-pagination {
  max-width: 1152px;
  width: 100%;
@@ -271,6 +273,41 @@ button {
    }
   }
  }
+ &__sticky {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+  position: fixed;
+  bottom: 2rem;
+  right: 6.4rem;
+  z-index: 200;
+  @media (max-width: 767px) {
+   right: 2.6rem;
+   gap: 2.6rem;
+  }
+  &_top,
+  &_chat {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   box-shadow: 0px 12px 16px -4px #00000014;
+   width: 6.4rem;
+   height: 6.4rem;
+   border-radius: 50%;
+   transition: var(--duration-normal);
+   @media (min-width: 768px) {
+    &:hover {
+     transform: scale(1.02);
+    }
+   }
+  }
+  &_top {
+   background-color: var(--color-white);
+  }
+  &_chat {
+   background-color: var(--color-primary);
+  }
+ }
 }
 .swiper-pagination.dots-primary {
  display: flex;
@@ -417,6 +454,7 @@ button {
   &_item {}
   &_link {
    padding: 0.8rem 1rem;
+   color: var(--color-white);
    @media (min-width: 1200px) {
     padding: 0.8rem 1.8rem 0.8rem 1.8rem;
    }
@@ -1019,6 +1057,19 @@ button {
  &__swiper-slide {}
  &__video {
   display: flex;
+  iframe {
+   width: 100%;
+   min-height: 51rem;
+   @media (max-width: 991px) {
+    min-height: 47.5rem;
+   }
+   @media (max-width: 767px) {
+    min-height: 35rem;
+   }
+   @media (max-width: 500px) {
+    min-height: 25rem;
+   }
+  }
  }
  &__swiper-pagination {}
  &__swiper-button-prev {
@@ -1129,6 +1180,121 @@ button {
     max-height: 5.6rem;
    }
   }
+ }
+}
+
+// map
+.map {
+ &__wrapper {
+  overflow: hidden;
+ }
+ &__inner {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 73.6rem;
+ }
+ &__title {
+  margin-bottom: 1.8rem;
+  @media (max-width: 767px) {
+   margin-bottom: 0.8rem;
+  } 
+ }
+ &__subtitle {
+  font-size: 1.8rem;
+  line-height: 2.6rem;
+  @media (max-width: 767px) {
+   font-size: 1.4rem;
+   line-height: 2.1rem;
+   margin-bottom: 3.6rem;
+  } 
+ }
+ &__case {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  max-width: 960px;
+  margin: 0 auto;
+  @media (max-width: 991px) {
+   max-width: 720px;
+  }
+  @media (max-width: 767px) {
+   max-width: 540px;
+  }
+  @media (max-width: 575px) {
+   max-width: 393px;
+   min-width: 393px;
+  }
+  img {
+   @media (max-width: 1199px) {
+    max-width: 100%;
+    object-fit: cover;
+   }
+  }
+ }
+ &__dots {
+  width: 100%;
+  min-height: 74rem;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  @media (max-width: 1199px) {
+   min-height: 49.3rem;
+  }
+  @media (max-width: 991px) {
+   min-height: 36.9rem;
+  }
+  @media (max-width: 767px) {
+   min-height: 27.7rem;
+  }
+  @media (max-width: 575px) {
+   min-height: 20.17rem;
+  }
+ }
+ &__dot {
+  position: absolute;
+  z-index: 1;
+  width: 1.2rem;
+  height: 1.2rem;
+  background-color: var(--color-red);
+  border-radius: 50%;
+  opacity: 0;
+  transition: var(--duration-normal);
+  @media (max-width: 1199px) {
+   width: 0.8rem;
+   height: 0.8rem;
+  }
+  @media (max-width: 767px) {
+   width: 0.64rem;
+   height: 0.64rem;
+  }
+  &.active {
+   opacity: 1;
+  }
+  &::before {
+   content: '';
+   position: absolute;
+   background-color: #EB57574D;
+   border-radius: 50%;
+   top: 50%;
+   left: 50%;
+   width: 100%;
+   height: 100%;
+   transform: translate(-50%, -50%) scale(2);
+   animation: pulsDot 2s infinite linear;
+  }
+ }
+}
+@keyframes pulsDot {
+ 0% {
+  transform: translate(-50%, -50%) scale(1);
+ }
+ 50% {
+  transform: translate(-50%, -50%) scale(1.5);
+ }
+ 100% {
+  transform: translate(-50%, -50%) scale(2);
  }
 }
 
@@ -1417,5 +1583,35 @@ button {
     background-color: var(--color-white);
    }
   }
+ }
+}
+
+// collections
+.collections {
+ &__wrapper {
+  padding-bottom: 8rem;
+ }
+ &__inner {}
+ &__list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 3.2rem;
+ }
+ &__item {
+  width: 100%;
+  max-width: calc(50% - 1.6rem);
+  &_image {
+   display: flex;
+   position: relative;
+  }
+  &_button {
+   max-width: 35.2rem;
+   position: absolute;
+   bottom: 4.8rem;
+   left: 50%;
+   transform: translateX(-50%);
+  }
+  &_description {}
  }
 }

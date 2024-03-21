@@ -50,7 +50,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
    })
   });
-
  }
 
  // header localization
@@ -72,6 +71,7 @@ document.addEventListener('DOMContentLoaded', function () {
  // banner swiper
  if (document.querySelectorAll('.banner__swiper').length) {
   const swiper = new Swiper('.banner__swiper', {
+   speed: 1000,
    pagination: {
     el: '.banner__swiper-pagination',
    },
@@ -81,6 +81,7 @@ document.addEventListener('DOMContentLoaded', function () {
  // new-collection swiper
  if (document.querySelectorAll('.new-collection__swiper').length) {
   const swiper = new Swiper('.new-collection__swiper', {
+   speed: 1000,
    spaceBetween: 32,
    slidesPerView: 1,
    breakpoints: {
@@ -106,43 +107,64 @@ document.addEventListener('DOMContentLoaded', function () {
   const wrapper = document.querySelector('.achievements');
   const items = document.querySelectorAll('.achievements__item_title span');
 
-  window.addEventListener('scroll', function () {
+  // function counts
+  function countItems() {
+   items.forEach(item => {
+    const number = item.textContent;
+    let i = 0;
+    if (number <= 100) {
+     let counts = setInterval(function () {
+      i++;
+      i > number ? clearInterval(counts) : item.innerText = i;
+     }, 50);
+    } else if (number <= 1000) {
+     let counts = setInterval(function () {
+      i++;
+      i > number ? clearInterval(counts) : item.innerText = i;
+     }, 1);
+    } else {
+     let counts = setInterval(function () {
+      i += 4;
+      i > number ? clearInterval(counts) : item.innerText = i;
+     }, 1);
+    }
+   })
+  }
+
+  // start function on scroll
+  let scrollPage = setInterval(function () {
    const offset = wrapper.offsetTop;
    let scrollDistance = window.scrollY;
-   if (offset - scrollDistance <= 400) {
-   }
-  });
-  items.forEach(item => {
-   const number = item.textContent;
-   let i = 0;
-   if (number <= 100) {
-    let counts = setInterval(function () {
-     i++;
-     i > number ? clearInterval(counts) : item.innerText = i;
-    }, 50);
-   } else if (number <= 1000) {
-    let counts = setInterval(function () {
-     i++;
-     i > number ? clearInterval(counts) : item.innerText = i;
-    }, 1);
+   let topDistance, bottomDistance;
+   if (screenWidth >= 768) {
+    topDistance = 350;
+    bottomDistance = -650;
    } else {
-    let counts = setInterval(function () {
-     i += 4;
-     i > number ? clearInterval(counts) : item.innerText = i;
-    }, 1);
+    topDistance = 600;
+    bottomDistance = -500;
    }
-  })
+   if (offset - scrollDistance <= topDistance && offset - scrollDistance > 0) {
+    countItems();
+    clearInterval(scrollPage);
+   } else if ((offset - scrollDistance >= bottomDistance && offset - scrollDistance < 0)) {
+    countItems();
+    clearInterval(scrollPage);
+    console.log('start')
+   }
+  }, 10);
  }
 
  // goal swiper
  if (document.querySelectorAll('.goal__swiper').length) {
   const swiper = new Swiper('.goal__swiper', {
+   speed: 1000,
    navigation: {
     nextEl: '.goal__swiper-button-next',
     prevEl: '.goal__swiper-button-prev',
    },
    pagination: {
     el: '.goal__swiper-pagination',
+    clickable: true,
    },
   });
  }
@@ -150,6 +172,7 @@ document.addEventListener('DOMContentLoaded', function () {
  // clients swiper
  if (document.querySelectorAll('.clients__swiper').length) {
   const swiper = new Swiper('.clients__swiper', {
+   speed: 1000,
    loop: true,
    spaceBetween: 48,
    slidesPerView: 2.6,
@@ -176,6 +199,20 @@ document.addEventListener('DOMContentLoaded', function () {
   });
  }
 
+ // map pins
+ if (document.querySelectorAll('.map__dots').length) {
+  const wrapper = document.querySelector('.map__dots');
+  const items = wrapper.querySelectorAll('.map__dot');
+  let m = 0;
+  for (let i = 0; i < items.length; i++) {
+   m = (i + 1) * 500;
+   function addClass() {
+    items[i].classList.add('active')
+   }
+   setInterval(addClass, m);
+  }
+ }
+
  // description accordion
  const screenWidth = window.screen.width;
  if (document.querySelectorAll('.description').length) {
@@ -189,7 +226,6 @@ document.addEventListener('DOMContentLoaded', function () {
    else if (screenWidth >= 768) wrapper.style.maxHeight = '360px';
    else wrapper.style.maxHeight = '388px'
   });
-
  }
 
 });
