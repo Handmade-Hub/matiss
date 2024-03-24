@@ -228,4 +228,26 @@ document.addEventListener('DOMContentLoaded', function () {
   });
  }
 
+ // filters drop-down
+ if (document.querySelectorAll('.filters').length) {
+
+  const filtersItems = document.querySelectorAll('.filters__item');
+
+  filtersItems.forEach(item => {
+   const menu = item.querySelector('.filters__item_list');
+   if (menu != null && menu != undefined) {
+    item.addEventListener('mouseover', evt => {
+     item.classList.add('active');
+     menu.classList.add('active');
+     menu.style.maxHeight = menu.scrollHeight + 'px';
+    })
+    item.addEventListener('mouseout', evt => {
+     item.classList.remove('active')
+     menu.classList.remove('active')
+     menu.style.maxHeight = null;
+    })
+   }
+  })
+ }
+
 });
