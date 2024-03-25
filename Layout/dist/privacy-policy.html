@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link
+  href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Raleway:wght@100..900&display=swap"
+  rel="stylesheet">
+ <link rel="stylesheet" href="css/reset.css">
+ <link rel="stylesheet" href="css/swiper-bundle.min.css">
+ <link rel="stylesheet" href="css/styles.css">
+ <title>Matis Studio</title>
+</head>
+
+<body id="scroll-top">
+ <div class="button__sticky">
+  <a href="#scroll-top" class="button__sticky_top">
+   <img src="images/icons/icon-arrow-long-top.svg" alt="arrow">
+  </a>
+  <a href="#" class="button__sticky_chat">
+   <img src="images/icons/icon-chat.svg" alt="chat">
+  </a>
+ </div>
+
+ <header class="header">
+  <div class="header__wrapper">
+   <div class="container">
+    <div class="header__inner">
+     <div class="header__block">
+      <a href="/" class="header__logo">
+       <img src="images/logo.svg" alt="logo">
+      </a>
+      <nav class="header__menu tablet-none">
+       <ul class="header__list">
+        <li class="header__list_item header__drop-down">
+         <div class="header__list_link fw-600 with-arrow">Каталог
+          <img src="images/icons/header-drop-icon.svg" alt="arrow">
+         </div>
+         <ul class="header__drop-down_list">
+          <li class="header__drop-down_item">
+           <a href="#" class="header__drop-down_link fw-600">Картини</a>
+          </li>
+          <li class="header__drop-down_item">
+           <a href="#" class="header__drop-down_link fw-600">Постери</a>
+          </li>
+          <li class="header__drop-down_item">
+           <a href="#" class="header__drop-down_link fw-600">Рами</a>
+          </li>
+          <li class="header__drop-down_item">
+           <a href="#" class="header__drop-down_link fw-600">Розпис</a>
+          </li>
+         </ul>
+        </li>
+        <li class="header__list_item header__drop-down">
+         <div class="header__list_link fw-600 with-arrow">Інформація
+          <img src="images/icons/header-drop-icon.svg" alt="arrow">
+         </div>
+         <ul class="header__drop-down_list">
+          <li class="header__drop-down_item">
+           <a href="#" class="header__drop-down_link fw-600">Загальна інформація</a>
+          </li>
+          <li class="header__drop-down_item">
+           <a href="#" class="header__drop-down_link fw-600">Послуги</a>
+          </li>
+          <li class="header__drop-down_item">
+           <a href="#" class="header__drop-down_link fw-600">Наша команда</a>
+          </li>
+          <li class="header__drop-down_item">
+           <a href="#" class="header__drop-down_link fw-600">Відео</a>
+          </li>
+          <li class="header__drop-down_item">
+           <a href="#" class="header__drop-down_link fw-600">Партнери</a>
+          </li>
+         </ul>
+        </li>
+        <li class="header__list_item">
+         <a href="#" class="header__list_link fw-600">Блог</a>
+        </li>
+        <li class="header__list_item">
+         <a href="#" class="header__list_link fw-600">Контакти</a>
+        </li>
+       </ul>
+      </nav>
+     </div>
+     <div class="header__pack tablet-none">
+      <div class="header__case">
+       <a href="tel:+380989940794" class="header__tel fw-600">+380 (98) 994 0794</a>
+      </div>
+      <div class="header__localization">
+       <button class="header__localization_button active fw-600">UA</button>
+       <button class="header__localization_button fw-600">EN</button>
+      </div>
+      <div class="header__icons tablet-none">
+       <div class="header__search">
+        <img src="images/icons/icon-search.svg" alt="search">
+       </div>
+       <div class="header__wishlist">
+        <img src="images/icons/icon-wishlist.svg" alt="wishlist">
+       </div>
+       <div class="header__cart">
+        <img src="images/icons/icon-cart.svg" alt="cart">
+       </div>
+      </div>
+     </div>
+     <div class="header__icons tablet-up-none">
+      <div class="header__wishlist">
+       <img src="images/icons/icon-wishlist.svg" alt="wishlist">
+      </div>
+      <div class="header__search">
+       <img src="images/icons/icon-search.svg" alt="search">
+      </div>
+     </div>
+     <div class="header__icons tablet-up-none">
+      <div class="header__cart">
+       <img src="images/icons/icon-cart.svg" alt="cart">
+      </div>
+      <div class="header__burger">
+       <img src="images/icons/icon-burger.svg" alt="burger">
+      </div>
+     </div>
+    </div>
+    <div class="header-mobile">
+     <div class="header-mobile__wrapper">
+      <div class="container">
+       <div class="header-mobile__inner">
+        <div class="header-mobile__close">
+         <img src="images/icons/icon-close.svg" alt="close">
+        </div>
+        <h3 class="header-mobile__title fw-500 open-sans">Меню</h3>
+        <nav class="header-mobile__menu">
+         <ul class="header-mobile__menu_list">
+          <li class="header-mobile__menu_item header-mobile__drop-down">
+           <div class="header-mobile__menu_link fw-500 with-arrow">Каталог
+            <img src="images/icons/button-arrow-right.svg" alt="arrow">
+           </div>
+           <ul class="header-mobile__drop-down_list">
+            <li class="header-mobile__drop-down_item">
+             <a href="#" class="header-mobile__drop-down_link fw-400">Картини</a>
+            </li>
+            <li class="header-mobile__drop-down_item">
+             <a href="#" class="header-mobile__drop-down_link fw-400">Постери</a>
+            </li>
+            <li class="header-mobile__drop-down_item">
+             <a href="#" class="header-mobile__drop-down_link fw-400">Рами</a>
+            </li>
+            <li class="header-mobile__drop-down_item">
+             <a href="#" class="header-mobile__drop-down_link fw-400">Розпис</a>
+            </li>
+           </ul>
+          </li>
+          <li class="header-mobile__menu_item header-mobile__drop-down">
+           <div href="#" class="header-mobile__menu_link fw-500 with-arrow">Інформація
+            <img src="images/icons/button-arrow-right.svg" alt="arrow">
+           </div>
+           <ul class="header-mobile__drop-down_list">
+            <li class="header-mobile__drop-down_item">
+             <a href="#" class="header-mobile__drop-down_link fw-400">Картини</a>
+            </li>
+            <li class="header-mobile__drop-down_item">
+             <a href="#" class="header-mobile__drop-down_link fw-400">Постери</a>
+            </li>
+            <li class="header-mobile__drop-down_item">
+             <a href="#" class="header-mobile__drop-down_link fw-400">Рами</a>
+            </li>
+            <li class="header-mobile__drop-down_item">
+             <a href="#" class="header-mobile__drop-down_link fw-400">Розпис</a>
+            </li>
+           </ul>
+          </li>
+          <li class="header-mobile__menu_item">
+           <a href="#" class="header-mobile__menu_link fw-500">Блог</a>
+          </li>
+          <li class="header-mobile__menu_item">
+           <a href="#" class="header-mobile__menu_link fw-500">Контакти</a>
+          </li>
+         </ul>
+        </nav>
+        <div class="header__localization">
+         <button class="header__localization_button active fw-600">UA</button>
+         <button class="header__localization_button fw-600">EN</button>
+        </div>
+        <div class="header__case">
+         <img src="images/icons/icon-viber.svg" alt="viber">
+         <a href="tel:+380989940794" class="header__tel fw-600">+380 (98) 994 0794</a>
+        </div>
+       </div>
+      </div>
+     </div>
+
+    </div>
+ </header>
+
+ <main class="main">
+
+  <!-- information-bar -->
+  <section class="information-bar">
+   <div class="information-bar__wrapper bg-gray">
+    <div class="container">
+     <div class="information-bar__inner">
+      <nav class="information-bar__navigation">
+       <ul class="information-bar__list">
+        <li class="information-bar__item">
+         <a href="#" class="information-bar__link uppercase">ЗАГАЛЬНА ІНФОРМАЦІЯ</a>
+        </li>
+        <li class="information-bar__item">
+         <a href="#" class="information-bar__link uppercase">ПОСЛУГИ</a>
+        </li>
+        <li class="information-bar__item">
+         <a href="#" class="information-bar__link uppercase">НАША КОМАНДА</a>
+        </li>
+        <li class="information-bar__item">
+         <a href="#" class="information-bar__link uppercase">ВІДЕО</a>
+        </li>
+        <li class="information-bar__item">
+         <a href="#" class="information-bar__link uppercase">ПАРТНЕРИ</a>
+        </li>
+        <li class="information-bar__item active">
+         <a href="#" class="information-bar__link uppercase">ПОЛІТИКА КОНФІДЕНЦІЙНОСТІ</a>
+        </li>
+       </ul>
+      </nav>
+     </div>
+    </div>
+   </div>
+  </section>
+
+  <!-- privacy-policy -->
+  <section class="privacy-policy">
+   <div class="privacy-policy__wrapper">
+    <div class="container">
+     <div class="privacy-policy__inner">
+      <h4 class="privacy-policy__title text-center fw-500">Політика конфіденційності</h4>
+      <p class="privacy-policy__subtitle fz-18 text-center">Умови використання об'єктів інтелектуальної власності,
+       розміщених на сайті www.matis.studio</p>
+      <div class="privacy-policy__content">
+       <p>Авторські права на інтернет-сайт, розташований за адресою www.matis.studio (далі - Сайт), а також на всі
+        об'єкти, розміщені на Сайті, які знаходяться в електронній формі, придатні для зчитування та відтворення
+        комп'ютером, які можуть існувати у вигляді одного та/або декількох файлів (частин файлів), записів у базі даних
+        на пристроях, що зберігають комп'ютерів, серверів і т.д. в мережі інтернету і в тому числі елементи дизайну,
+        витвори мистецтва, картини, малюнки, зображення, фотографії, тексти, описи, які є об'єктами інтелектуальної
+        власності, належать ФОП Чорнобровкіну Денису Олеговичу.</p>
+       <p>Авторські права ФОП Чорнобровкіна Дениса Олеговича поширюються як на оприлюднені, так і на неоприлюднені
+        витвори мистецтва, картини, малюнки, фотографії, тексти, описи, виражені в будь-якій об'єктивній формі, у тому
+        числі в письмовій, усній формі, у формі зображення, об'ємно-просторовій формі.</p>
+       <p>Захист особистих нематеріальних та матеріальних прав ґрунтується на приписах Бернської Конвенції з охорони
+        літературних та художніх творів, Конституції України, Цивільного кодексу України, Законів України «Про авторське
+        право та суміжні права» та інших Законів України, які охороняють особисті нематеріальні та матеріальні права
+        суб'єктів авторського права та суміжних прав.</p>
+       <p>Треті особи не мають права використовувати розміщені на Сайті будь-які результати інтелектуальної діяльності у
+        будь-який спосіб без попередньої письмової згоди правовласника.</p>
+       <p>Використання результатів інтелектуальної діяльності, якщо таке використання здійснюється без згоди
+        правовласника, є незаконним та тягне за собою відповідальність, встановлену чинним законодавством України.</p>
+       <p>Відповідно до ст. 431 Цивільного кодексу України порушення права інтелектуальної власності, у тому числі
+        невизнання цього права або посягання на нього, тягне за собою відповідальність, встановлену цим Кодексом, іншим
+        законом або договором.</p>
+       <p>За захистом свого авторського права та/або суміжних прав суб'єкти авторського права та/або суміжних прав мають
+        право звертатися в установленому порядку до суду та інших органів відповідно до їх компетенції.</p>
+       <p>При порушенні будь-якою особою авторського права та/або суміжних прав суб'єкти авторського права та суміжних
+        прав мають право:</p>
+       <p>а) вимагати визнання та відновлення своїх прав, у тому числі забороняти дії, що порушують авторські права
+        та/або суміжні права або створюють загрозу для їх порушення;</p>
+       <p>б) звертатися до суду з позовом про відновлення порушених прав та/або зупинення дій, які порушують авторські
+        та/або суміжні права або створюють загрозу їхньому порушенню;</p>
+       <p>в) подавати позови про відшкодування моральної (нематеріальної) шкоди;</p>
+       <p>г) подавати позови про відшкодування збитків (матеріальних збитків), включаючи втрачену вигоду, або стягнення
+        доходу, отриманого порушником внаслідок порушення ним авторського права та/або суміжних прав, або виплати
+        компенсацій;</p>
+       <p>з) вимагати вживання інших передбачених законодавством заходів, пов'язаних із захистом авторського права та
+        суміжних прав (пункти а, б, в, г, із статті 52 ЗУ «Про авторське право та суміжні права»).</p>
+       <p>Крім цивільно-правової відповідальності, порушник авторських та/або суміжних прав може бути притягнутий до
+        адміністративної чи кримінальної відповідальності.</p>
+       <p>Відповідно до статті 51-2 Кодексу України про адміністративні правопорушення незаконне використання об'єкта
+        права інтелектуальної власності (у тому числі творів живопису, архітектури, скульптури та графіки), присвоєння
+        авторства на такий об'єкт чи інше умисне порушення прав на об'єкт права інтелектуальної власності, що
+        охороняється законом , -</p>
+       <p>тягне за собою накладення штрафу від 170,00 до 3 400,00 гривень з конфіскацією незаконно виготовленої
+        продукції та обладнання та матеріалів, призначених для її виготовлення.</p>
+       <p>У статті 176 Кримінального кодексу України зазначається, що незаконне відтворення, розповсюдження творів
+        науки, літератури та мистецтва, у тому числі творів живопису, архітектури, скульптури та графіки, чи інше умисне
+        порушення авторського права та суміжних прав, а також фінансування таких дій, якщо це завдало матеріальних
+        збитків у значному розмірі (понад 21 020,00 гривень), -</p>
+       <p>карається штрафом від 3 400,00 до 17 000,00 гривень або виправними роботами на строк до двох років, або
+        позбавленням волі на той самий термін, з конфіскацією та знищенням усіх примірників творів, знарядь та
+        матеріалів, призначених для їх виготовлення.</p>
+       <p>Права на використання одного об'єкта авторського права (твору образотворчого мистецтва, картини, малюнка,
+        зображення, фотографії, статті тощо), розміщеного на Сайті, надаються шляхом укладання з правовласником
+        відповідного договору.</p>
+       <p>З усіх питань використання об'єктів авторських та суміжних прав, що знаходяться на Сайті, необхідно звертатися
+        до правовласника – ФОП Чорнобровкіна Дениса Олеговича.</p>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+
+ </main>
+
+ <footer class="footer">
+  <div class="footer__wrapper space-sections">
+   <div class="container">
+    <div class="footer__inner">
+     <div class="footer__block">
+      <a href="/" class="footer__logo footer__logo_mobile">
+       <img src="images/footer-logo.svg" alt="logo">
+      </a>
+      <div class="footer__content">
+       <div class="footer__wrap">
+        <a href="/" class="footer__logo">
+         <img src="images/footer-logo.svg" alt="logo">
+        </a>
+        <div class="footer__info">
+         <p class="footer__info_title fw-600">Салони</p>
+         <ul class="footer__info_list">
+          <li class="footer__info_item">
+           <p class="footer__info_adress">ТЦ 4room, Петропавлівська Борщагівка, вул. Петропавлівська, 6</p>
+           <p class="footer__info_time">Пн-Нд. 10.00-20.00</p>
+          </li>
+          <li class="footer__info_item">
+           <p class="footer__info_adress">ТЦ Аракс, Київ, вул. Кільцева дорога, 110</p>
+           <p class="footer__info_time">Пн-Нд. 10.00-20.00</p>
+          </li>
+          <li class="footer__info_item">
+           <p class="footer__info_adress">ТЦ Три Слони, Львів, вул. Яворівська, 22</p>
+           <p class="footer__info_time">Пн-Нд. 11.00-19.00</p>
+          </li>
+         </ul>
+        </div>
+        <div class="footer__info">
+         <p class="footer__info_title fw-600">Майстерня</p>
+         <ul class="footer__info_list">
+          <li class="footer__info_item">
+           <p class="footer__info_adress">Київ, вул. Генерала Шаповала, 2, офіс 555</p>
+           <p class="footer__info_time">Пн-Пт. 10.00-19.00</p>
+          </li>
+         </ul>
+        </div>
+       </div>
+       <div class="footer__menu">
+        <p class="footer__menu_title fw-600">Каталог</p>
+        <nav class="footer__menu_nav">
+         <ul class="footer__menu_list">
+          <li class="footer__menu_item">
+           <a href="#" class="footer__menu_link">Картини</a>
+          </li>
+          <li class="footer__menu_item">
+           <a href="#" class="footer__menu_link">Постери</a>
+          </li>
+          <li class="footer__menu_item">
+           <a href="#" class="footer__menu_link">Рами</a>
+          </li>
+          <li class="footer__menu_item">
+           <a href="#" class="footer__menu_link">Індивідуальне замовлення</a>
+          </li>
+          <li class="footer__menu_item">
+           <a href="#" class="footer__menu_link">Подарунковий сертифікат</a>
+          </li>
+          <li class="footer__menu_item">
+           <a href="#" class="footer__menu_link">Розпис</a>
+          </li>
+         </ul>
+        </nav>
+       </div>
+       <div class="footer__menu">
+        <p class="footer__menu_title fw-600">Інформація</p>
+        <nav class="footer__menu_nav">
+         <ul class="footer__menu_list">
+          <li class="footer__menu_item">
+           <a href="#" class="footer__menu_link">Загальна інформація</a>
+          </li>
+          <li class="footer__menu_item">
+           <a href="#" class="footer__menu_link">Послуги</a>
+          </li>
+          <li class="footer__menu_item">
+           <a href="#" class="footer__menu_link">Наша команда</a>
+          </li>
+          <li class="footer__menu_item">
+           <a href="#" class="footer__menu_link">Відео</a>
+          </li>
+          <li class="footer__menu_item">
+           <a href="#" class="footer__menu_link">Партнери</a>
+          </li>
+         </ul>
+        </nav>
+       </div>
+       <div class="footer__menu">
+        <p class="footer__menu_title fw-600">Блог</p>
+        <nav class="footer__menu_nav">
+         <ul class="footer__menu_list">
+          <li class="footer__menu_item">
+           <a href="#" class="footer__menu_link">Контакти</a>
+          </li>
+         </ul>
+        </nav>
+       </div>
+      </div>
+      <div class="footer__icons">
+       <ul class="footer__social">
+        <li class="footer__social_item">
+         <a href="#" class="footer__social_link">
+          <img src="images/icons/footer-instagram.svg" alt="instagram">
+         </a>
+        </li>
+        <li class="footer__social_item">
+         <a href="#" class="footer__social_link">
+          <img src="images/icons/footer-facebook.svg" alt="facebook">
+         </a>
+        </li>
+        <li class="footer__social_item">
+         <a href="#" class="footer__social_link">
+          <img src="images/icons/footer-youtube.svg" alt="youtube">
+         </a>
+        </li>
+        <li class="footer__social_item">
+         <a href="#" class="footer__social_link">
+          <img src="images/icons/footer-pinterest.svg" alt="pinterest">
+         </a>
+        </li>
+        <li class="footer__social_item">
+         <a href="#" class="footer__social_link">
+          <img src="images/icons/footer-etsy.svg" alt="etsy">
+         </a>
+        </li>
+       </ul>
+       <ul class="footer__payments">
+        <li class="footer__payments_item">
+         <img src="images/icons/footer-paypal.svg" alt="paypal">
+        </li>
+        <li class="footer__payments_item">
+         <img src="images/icons/footer-mastercard.svg" alt="mastercard">
+        </li>
+        <li class="footer__payments_item">
+         <img src="images/icons/footer-visa.svg" alt="visa">
+        </li>
+       </ul>
+      </div>
+     </div>
+     <div class="footer__copyright">
+      <p>© 2023. All rights reserved.</p>
+      <a href="#">Політка конфіденційності</a>
+     </div>
+    </div>
+   </div>
+  </div>
+ </footer>
+
+ <script src="js/swiper-bundle.min.js"></script>
+ <script src="js/global.js" defer></script>
+</body>
+
+</html>

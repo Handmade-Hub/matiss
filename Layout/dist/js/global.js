@@ -230,7 +230,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
  // filters drop-down
  if (document.querySelectorAll('.filters').length) {
-
   const filtersItems = document.querySelectorAll('.filters__item');
 
   filtersItems.forEach(item => {

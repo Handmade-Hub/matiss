@@ -195,6 +195,7 @@
 
  <main class="main">
 
+  <!-- breadcrumbs -->
   <div class="breadcrumbs">
    <div class="breadcrumbs__wrapper">
     <div class="container">
@@ -223,7 +224,7 @@
    <div class="filters__wrapper bg-gray">
     <div class="container">
      <div class="filters__inner">
-      <ul class="filters__list">
+      <ul class="filters__list filters__list_desktop">
        <li class="filters__item">
         <div class="filters__item_select">
          <span>СОРТУВАННЯ</span>
@@ -249,6 +250,9 @@
           <path d="M20 8L12.5 15.5L5 8" stroke="black" stroke-width="1.5" stroke-linecap="round"
            stroke-linejoin="round" />
          </svg>
+        </div>
+        <div class="filters__item_list">
+         <input type="range" min="0" max="600">
         </div>
        </li>
        <li class="filters__item">
@@ -380,6 +384,26 @@
           <li class="filters__item_option">Ванна кімната</li>
           <li class="filters__item_option">Дитяча кімната</li>
          </ul>
+        </div>
+       </li>
+      </ul>
+      <ul class="filters__list filters__list_mobile">
+       <li class="filters__item">
+        <div class="filters__item_select">
+         <span>СОРТУВАННЯ</span>
+         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 8L12.5 15.5L5 8" stroke="black" stroke-width="1.5" stroke-linecap="round"
+           stroke-linejoin="round" />
+         </svg>
+        </div>
+       </li>
+       <li class="filters__item">
+        <div class="filters__item_select">
+         <span>ФІЛЬТРИ</span>
+         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8 4L15.5 11.5L8 19" stroke="black" stroke-width="1.5" stroke-linecap="round"
+           stroke-linejoin="round" />
+         </svg>
         </div>
        </li>
       </ul>
