@@ -9,9 +9,11 @@
  <link
   href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Raleway:wght@100..900&display=swap"
   rel="stylesheet">
+ <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.css" rel="stylesheet" type="text/css" />
  <link rel="stylesheet" href="css/reset.css">
  <link rel="stylesheet" href="css/swiper-bundle.min.css">
  <link rel="stylesheet" href="css/styles.css">
+ <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.js" type="text/javascript"></script>
  <title>Matis Studio</title>
 </head>
 
@@ -215,6 +217,196 @@
    </div>
   </div>
 
+  <!-- contacts -->
+  <section class="contacts">
+   <div class="contacts__wrapper">
+    <div class="container">
+     <div class="contacts__inner">
+      <ul class="contacts__list">
+       <li class="contacts__item">
+        <div class="contacts__item_block">
+         <div class="contacts__item_case">
+          <img src="images/icons/icon-viber.svg" alt="icon">
+          <a href="tel:380989940794">+380 (98) 994 0794</a>
+         </div>
+         <p>(Viber,Telegram,WhatsApp)</p>
+        </div>
+        <div class="contacts__item_block">
+         <div class="contacts__item_case">
+          <img src="images/icons/Icon-email.svg" alt="icon">
+          <p>Email</p>
+         </div>
+         <div class="contacts__item_wrap">
+          <p>Для оформлення замовлення</p>
+          <a href="mailto:matis.decor@gmail.com">matis.decor@gmail.com</a>
+         </div>
+         <div class="contacts__item_wrap">
+          <p>Загальні питання</p>
+          <a href="mailto:matis.group@gmail.com">matis.group@gmail.com</a>
+         </div>
+        </div>
+       </li>
+       <li class="contacts__item">
+        <div class="contacts__item_block">
+         <div class="contacts__item_case">
+          <img src="images/icons/Icon-location.svg" alt="icon">
+          <p>Салон в ТЦ 4room</p>
+         </div>
+         <a
+          href="https://www.google.com/maps/place/4ROOM+(Форум)+-+меблевий+торговельний+центр/@50.4384003,30.3549591,17z/data=!3m1!4b1!4m6!3m5!1s0x40d4cb794cff8a8d:0xafd22daf2306d636!8m2!3d50.4384003!4d30.357534!16s%2Fg%2F12hlkhwx6?entry=ttu"
+          class="underline">ТЦ 4room, Київ, Петропавлівська Борщагівка, вул. Петропавлівська, 6</a>
+         <a href="tel:+380930920260">+380 (93) 092 02 60</a>
+         <p>Пн-Нд. 10.00-20.00</p>
+        </div>
+        <div class="contacts__item_block">
+         <div class="contacts__item_case">
+          <img src="images/icons/Icon-location.svg" alt="icon">
+          <p>Салон в ТЦ Три Слони</p>
+         </div>
+         <a
+          href="https://www.google.com/maps/search/ТЦ+Три+Слони,+Львів,+вул.+Яворівська,+22/@49.8290504,23.9042875,16z/data=!3m1!4b1?entry=ttu"
+          class="underline">ТЦ Три Слони, Львів, вул. Яворівська, 22</a>
+         <p>Пн-Нд. 11.00-19.00</p>
+         <a href="tel:380961205079">+380 (96) 120 50 79</a>
+        </div>
+       </li>
+       <li class="contacts__item">
+        <div class="contacts__item_block">
+         <div class="contacts__item_case">
+          <img src="images/icons/Icon-location.svg" alt="icon">
+          <p>Салон в ТЦ Аракс</p>
+         </div>
+         <a
+          href="https://www.google.com/maps/place/Аракс/@50.3817352,30.4383956,17z/data=!3m1!4b1!4m6!3m5!1s0x40d4c905cda12ca5:0x35ab3261e199ea30!8m2!3d50.3817352!4d30.4409705!16s%2Fg%2F119t8cjcr?entry=ttu"
+          class="underline">ТЦ Аракс, Київ, вул. Кільцева дорога, 110</a>
+         <p>Пн-Нд. 10.00-20.00</p>
+         <a href="tel:380961205072">+380 (96) 120 50 72</a>
+        </div>
+        <div class="contacts__item_block">
+         <div class="contacts__item_case">
+          <img src="images/icons/Icon-location.svg" alt="icon">
+          <p>Майстерня</p>
+         </div>
+         <a
+          href="https://www.google.com/maps/place/вулиця+Генерала+Шаповала,+2,+Київ,+02000/@50.4305965,30.4818068,17z/data=!3m1!4b1!4m6!3m5!1s0x40d4ceea077124bb:0xadade244f47f202a!8m2!3d50.4305965!4d30.4843817!16s%2Fg%2F11c43tx2qm?entry=ttu"
+          class="underline">Київ, вул. Генерала Шаповала, 2, офіс 555</a>
+         <p>Пн-Пт. 10.00-19.00</p>
+        </div>
+       </li>
+      </ul>
+     </div>
+    </div>
+
+    <!-- map -->
+    <style>
+     #map {
+      width: 100%;
+      height: 68.2rem;
+     }
+
+     @media (max-width: 767px) {
+      #map {
+       height: 40rem;
+      }
+     }
+     @media (max-width: 575px) {
+      #map {
+       height: 22rem;
+      }
+     }
+    </style>
+    <div class="contacts__map" id='map' class="apelsun-mapbox-wrap idf0d275f0">
+    </div>
+    <script>
+     mapboxgl.accessToken = 'pk.eyJ1IjoibWF0dGlzc3MiLCJhIjoiY2p3a2hqMnlnMHR5cTQ4cGJhejQ2ZWVobyJ9.bbN8M-syJjv2MvuLP9qHtw';
+     
+     const screenWidth = window.screen.width;
+     let zoomNumber;
+     screenWidth >= 768 ? zoomNumber = 10 : zoomNumber = 9;
+
+     var map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/smu24/cjogxz9le005f2sqz9nxvfysz',
+      center: [30.55, 50.45],
+      zoom: zoomNumber
+     });
+     var eldata0 = document.createElement('div');
+     eldata0.className = 'marker';
+
+     new mapboxgl.Marker(eldata0)
+      .setLngLat([30.484446, 50.430784])
+      .setPopup(new mapboxgl.Popup({ offset: 25 })
+       .setHTML("<p>\u041c\u0430\u0439\u0441\u0442\u0435\u0440\u043d\u044f Matiss<\/p>\r\n<p>\u0432\u0443\u043b. \u0428\u0430\u043f\u043e\u0432\u0430\u043b\u0430 2, \u043e\u0444 555<\/p>" + '</p>'))
+      .addTo(map);
+
+     var eldata1 = document.createElement('div');
+     eldata1.className = 'marker';
+
+     new mapboxgl.Marker(eldata1)
+      .setLngLat([30.358381, 50.438213])
+      .setPopup(new mapboxgl.Popup({ offset: 25 })
+       .setHTML("<p>\u0421\u0430\u043b\u043e\u043d \u043a\u0430\u0440\u0442\u0438\u043d Matiss<\/p>\r\n<p>\u0422\u0426 4Room<\/p>\r\n<p>\u041f\u0435\u0442\u0440\u043e\u043f\u0430\u0432\u043b\u0456\u0432\u0441\u044c\u043a\u0430 \u0411\u043e\u0440\u0449\u0430\u0433\u0456\u0432\u043a\u0430, \u0432\u0443\u043b.\u041f\u0435\u0442\u0440\u043e\u043f\u0430\u0432\u043b\u0456\u0432\u0441\u044c\u043a\u0430 6<\/p>" + '</p>'))
+      .addTo(map);
+
+     var eldata2 = document.createElement('div');
+     eldata2.className = 'marker';
+
+     new mapboxgl.Marker(eldata2)
+      .setLngLat([30.441198, 50.381854])
+      .setPopup(new mapboxgl.Popup({ offset: 25 })
+       .setHTML("<p>\u0421\u0430\u043b\u043e\u043d \u043a\u0430\u0440\u0442\u0438\u043d Matiss<\/p>\r\n<p>\u0422\u0426 \u0410\u0440\u0430\u043a\u0441<\/p>\r\n<p>\u0412\u0435\u043b\u0438\u043a\u0430 \u043a\u0456\u043b\u044c\u0446\u0435\u0432\u0430 \u0434\u043e\u0440\u043e\u0433\u0430 110<\/p>" + '</p>'))
+      .addTo(map);
+
+     var eldata3 = document.createElement('div');
+     eldata3.className = 'marker';
+
+     new mapboxgl.Marker(eldata3)
+      .setLngLat([23.907950, 49.830623])
+      .setPopup(new mapboxgl.Popup({ offset: 25 })
+       .setHTML("<p>\u0421\u0430\u043b\u043e\u043d \u043a\u0430\u0440\u0442\u0438\u043d Matiss<\/p>\r\n<p>\u0422\u0426&nbsp;\u0422\u0440\u0438 \u0441\u043b\u043e\u043d\u0438<\/p>\r\n<p>\u041b\u044c\u0432\u0456\u0432, \u0417\u0438\u043c\u043d\u0430 \u0432\u043e\u0434\u0430, \u042f\u0432\u0430\u0440\u044b\u0432\u0441\u044c\u043a\u0430 22<\/p>" + '</p>'))
+      .addTo(map);
+
+     // disable map zoom when using scroll
+     map.scrollZoom.disable();
+     map.addControl(new mapboxgl.NavigationControl());
+    </script>
+   </div>
+  </section>
+
+  <!-- contact-form -->
+  <section class="contact-form">
+   <div class="contact-form__wrapper">
+    <div class="container">
+     <div class="contact-form__inner">
+      <h4 class="contact-form__title">Замовити зворотній звʼязок</h4>
+      <form>
+       <div class="contact-form__case">
+        <div class="contact-form__field contact-form__field--required">
+         <input type="text" name="name" placeholder="Імʼя*" id="name">
+         <label for="name">Імʼя*</label>
+         <p class="contact-form__error">Будь-ласка, введіть імʼя</p>
+        </div>
+        <div class="contact-form__field contact-form__field--required">
+         <input type="text" name="name" placeholder="Телефон*" id="phone">
+         <label for="phone">Телефон*</label>
+         <p class="contact-form__error">Будь-ласка, введіть номер телефону</p>
+        </div>
+       </div>
+       <div class="contact-form__field">
+        <input type="text" name="name" placeholder="Email" id="email">
+        <label for="email">Email</label>
+       </div>
+       <div class="contact-form__field">
+        <textarea placeholder="Повідомлення" name="message" id="message"></textarea>
+        <label for="message">Повідомлення</label>
+       </div>
+       <input class="contact-form__button button__primary disabled" value="надіслати" type="submit">
+      </form>
+     </div>
+    </div>
+   </div>
+  </section>
+
   <!-- dealers -->
   <section class="dealers">
    <div class="dealers__wrapper bg-gray">
@@ -257,64 +449,64 @@
        <li class="dealers__item">
         <h4 class="dealers__item_title">Київ. Салон меблів "WELOVEMEBEL"</h4>
         <a href="#" class="dealers__item_link">https://welovemebel.com.ua/ua/</a>
-         <p>ТЦ "4Room", 2 поверх</p>
-         <p>с. Петропавлівська Борщагівка,</p>
-         <p>вул. Петропавлівська, 6</p>
+        <p>ТЦ "4Room", 2 поверх</p>
+        <p>с. Петропавлівська Борщагівка,</p>
+        <p>вул. Петропавлівська, 6</p>
         <a href="#" class="dealers__item_tel">тел.: +38 (063) 841-0335</a>
        </li>
        <li class="dealers__item">
         <h4 class="dealers__item_title">Київ. Салон меблів "WELOVEMEBEL"</h4>
         <a href="#" class="dealers__item_link">welovemebel.com.ua</a>
-         <p>"Центральний Дім Меблів", -1 поверх</p>
-         <p>бул. Дружби Народів, 23</p>
+        <p>"Центральний Дім Меблів", -1 поверх</p>
+        <p>бул. Дружби Народів, 23</p>
         <a href="#" class="dealers__item_tel">тел.: +38 (067) 402-8216</a>
        </li>
        <li class="dealers__item">
         <h4 class="dealers__item_title">Київ. Салон бельгійських меблів "ROM"</h4>
         <a href="#" class="dealers__item_link">www.rom-ua.com</a>
-         <p>ТЦ "Аракс", салон "ROM".</p>
-         <p>1 поверх.</p>
-         <p>вул. Велика Окружна, 110</p>
+        <p>ТЦ "Аракс", салон "ROM".</p>
+        <p>1 поверх.</p>
+        <p>вул. Велика Окружна, 110</p>
         <a href="#" class="dealers__item_tel">тел.: +38 (095) 617-0525</a>
        </li>
        <li class="dealers__item">
         <h4 class="dealers__item_title">Київ. Салон італійських меблів "CARVELLI"</h4>
         <a href="#" class="dealers__item_link">www.tango.ua</a>
-         <p>ТЦ "4Room",</p>
-         <p>2 поверх</p>
-         <p>с. Петропавлівська Борщагівка,</p>
-         <p>вул. Петропавлівська, 6</p>
+        <p>ТЦ "4Room",</p>
+        <p>2 поверх</p>
+        <p>с. Петропавлівська Борщагівка,</p>
+        <p>вул. Петропавлівська, 6</p>
        </li>
        <li class="dealers__item">
         <h4 class="dealers__item_title">Київ. Салон м'яких меблів та інтер'єру "Interios"</h4>
         <a href="#" class="dealers__item_link">www.millini.com.ua</a>
-         <p>пр-т. Григоренка, 22/20, 2 поверх</p>
-         <a href="#" class="dealers__item_tel">тел.: +38 (044) 229-2902</a>
-         <p>пн-пт 10.00 - 19.00,</p>
-         <p>сб-нд 10.00 - 19.00</p>
+        <p>пр-т. Григоренка, 22/20, 2 поверх</p>
+        <a href="#" class="dealers__item_tel">тел.: +38 (044) 229-2902</a>
+        <p>пн-пт 10.00 - 19.00,</p>
+        <p>сб-нд 10.00 - 19.00</p>
        </li>
        <li class="dealers__item">
         <h4 class="dealers__item_title">Київ. Салон "Giorgio Concept"</h4>
         <a href="#" class="dealers__item_link">www.giorgioconcept.com</a>
-         <p>ТЦ "Домосфера", 2 поверх</p>
-         <p>Столичне шосе, 101</p>
+        <p>ТЦ "Домосфера", 2 поверх</p>
+        <p>Столичне шосе, 101</p>
         <a href="#" class="dealers__item_tel">тел.: +38 (044) 252-7203</a>
         <a href="#" class="dealers__item_tel">тел.: +38 (067) 555-1552</a>
        </li>
        <li class="dealers__item">
         <h4 class="dealers__item_title">Київ. Салон м'яких меблів "Millini"</h4>
         <a href="#" class="dealers__item_link">www.millini.com.ua</a>
-         <p>ТЦ "4Room". - 1 поверх.</p>
-         <p>с. Петропавлівська Борщагівка,</p>
-         <p>вул. Петропавлівська, 6</p>
+        <p>ТЦ "4Room". - 1 поверх.</p>
+        <p>с. Петропавлівська Борщагівка,</p>
+        <p>вул. Петропавлівська, 6</p>
         <a href="#" class="dealers__item_tel">тел.: +38 (044) 229-2905</a>
        </li>
        <li class="dealers__item">
         <h4 class="dealers__item_title">Київ. Салон італійських меблів "Tango"</h4>
         <a href="#" class="dealers__item_link">www.tango.ua</a>
-         <p>ТЦ "4Room", 2 поверх</p>
-         <p>с. Петропавлівська Борщагівка,</p>
-         <p>вул. Петропавлівська, 6</p>
+        <p>ТЦ "4Room", 2 поверх</p>
+        <p>с. Петропавлівська Борщагівка,</p>
+        <p>вул. Петропавлівська, 6</p>
         <a href="#" class="dealers__item_tel">тел.: +38 (044) 383-4900</a>
        </li>
        <li class="dealers__item">
@@ -326,6 +518,30 @@
         <p class="dealers__item_adress">10:00-20:00</p>
        </li>
       </ul>
+     </div>
+    </div>
+   </div>
+  </section>
+
+  <!-- newsletter -->
+  <section class="newsletter">
+   <div class="newsletter__wrapper">
+    <div class="container">
+     <div class="newsletter__inner">
+      <h4 class="newsletter__title text-center fw-500">Отримайте доступ до нашого щорічного каталогу картин в PDF
+       форматі</h4>
+      <p class="newsletter__text text-center fz-18">Готові вдосконалити ваші проекти за допомогою робіт від наших
+       художників? Залиште email нижче, щоб отримати каталог для зручного використання
+      </p>
+      <div class="newsletter__form">
+       <form method="post">
+        <div class="newsletter__form_field">
+         <input class="newsletter__form_input" placeholder="Email" id="POST-name" type="text" name="name">
+         <label class="newsletter__form_label" for="POST-name">Email</label>
+        </div>
+        <input class="button__primary newsletter__form_button" type="submit" value="Підписатися">
+       </form>
+      </div>
      </div>
     </div>
    </div>

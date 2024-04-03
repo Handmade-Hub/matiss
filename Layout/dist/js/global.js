@@ -249,4 +249,34 @@ document.addEventListener('DOMContentLoaded', function () {
   })
  }
 
+ // contact form error
+ if (document.querySelectorAll('.contact-form').length) {
+  const form = document.querySelector('.contact-form form');
+  const requiredFields = form.querySelectorAll('.contact-form__field--required');
+  
+  form.addEventListener('submit', e => {
+   requiredFields.forEach(field => {
+    const input = field.querySelector('input');
+    if (input.value == '') {
+     field.classList.add('error');
+     e.preventDefault();
+    } else {
+     field.classList.remove('error');
+    }
+   })
+  })
+ }
+
+ // featured-product swiper
+ if (document.querySelectorAll('.featured-product__swiper').length) {
+  const swiper = new Swiper('.featured-product__swiper', {
+   speed: 1000,
+   spaceBetween: 32,
+   slidesPerView: 3,
+   pagination: {
+    el: '.featured-product__swiper-pagination',
+   },
+  });
+ }
+
 });
