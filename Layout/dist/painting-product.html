@@ -11,6 +11,7 @@
   rel="stylesheet">
  <link rel="stylesheet" href="css/reset.css">
  <link rel="stylesheet" href="css/swiper-bundle.min.css">
+ <link rel="stylesheet" href="css/fancybox.css">
  <link rel="stylesheet" href="css/styles.css">
  <title>Matis Studio</title>
 </head>
@@ -210,7 +211,7 @@
         <img src="images/icons/icon-breadcrumbs.svg" alt="next">
        </li>
        <li class="breadcrumbs__item">
-        <p class="breadcrumbs__item_link fw-500">Картини</p>
+        <a href="/" class="breadcrumbs__item_link fw-500">Головна</a>
         <img src="images/icons/icon-breadcrumbs.svg" alt="next">
        </li>
        <li class="breadcrumbs__item">
@@ -223,54 +224,231 @@
    </div>
   </div>
 
+  <!-- product -->
+  <section class="product">
+   <div class="product__wrapper">
+    <div class="product__swiper swiper mobile-up-none">
+     <div class="product__swiper-wrapper swiper-wrapper">
+      <div class="product__swiper-slide swiper-slide">
+       <img src="images/paintings/big-one.jpg" alt="image">
+      </div>
+      <div class="product__swiper-slide swiper-slide">
+       <img src="images/paintings/big-two.jpg" alt="image">
+      </div>
+      <div class="product__swiper-slide swiper-slide">
+       <img src="images/paintings/big-three.jpg" alt="image">
+      </div>
+      <div class="product__swiper-slide swiper-slide">
+       <img src="images/paintings/big-four.jpg" alt="image">
+      </div>
+      <div class="product__swiper-slide swiper-slide">
+       <img src="images/paintings/big-five.jpg" alt="image">
+      </div>
+      <div class="product__swiper-slide swiper-slide">
+       <img src="images/paintings/big-six.jpg" alt="image">
+      </div>
+      <div class="product__swiper-slide swiper-slide">
+       <img src="images/paintings/big-seven.jpg" alt="image">
+      </div>
+     </div>
+     <div class="product__swiper-pagination dots-primary swiper-pagination"></div>
+    </div>
+    <div class="container">
+     <div class="product__inner">
+      <div class="product__case">
+       <div class="product__image mobile-none">
+        <a href="images/paintings/big-one.jpg" data-fancybox="gallery">
+         <img src="images/paintings/one.jpg" alt="image">
+        </a>
+       </div>
+       <div class="product__information">
+        <div class="product__content">
+         <h2 class="product__title">Impression</h2>
+         <p>Артикул: АA-350</p>
+         <p class="product__price">від<span>$330</span></p>
+         <div class="product__content_wrap">
+          <p>Матеріали: акрил, полотно.</p>
+          <p>Примітки: Можливе виготовлення картини в індивідуальному розмірі та кольорі.</p>
+         </div>
+        </div>
+        <div class="product__buttons">
+         <a href="#" class="product__button button__primary">Додати в кошик</a>
+         <a href="#" class="product__button button__outline">Купити в один клік</a>
+        </div>
+       </div>
+      </div>
+      <ul class="product__media mobile-none">
+       <li class="product__media_item">
+        <a href="images/paintings/big-two.jpg" data-fancybox="gallery">
+         <img src="images/paintings/two.jpg" alt="image">
+        </a>
+       </li>
+       <li class="product__media_item">
+        <a href="images/paintings/big-three.jpg" data-fancybox="gallery">
+         <img src="images/paintings/three.jpg" alt="image">
+        </a>
+       </li>
+       <li class="product__media_item">
+        <a href="images/paintings/big-four.jpg" data-fancybox="gallery">
+         <img src="images/paintings/four.jpg" alt="image">
+        </a>
+       </li>
+       <li class="product__media_item">
+        <a href="images/paintings/big-five.jpg" data-fancybox="gallery">
+         <img src="images/paintings/five.jpg" alt="image">
+        </a>
+       </li>
+       <li class="product__media_item">
+        <a href="images/paintings/big-six.jpg" data-fancybox="gallery">
+         <img src="images/paintings/six.jpg" alt="image">
+        </a>
+       </li>
+       <li class="product__media_item">
+        <a href="images/paintings/big-seven.jpg" data-fancybox="gallery">
+         <img src="images/paintings/seven.jpg" alt="image">
+        </a>
+       </li>
+      </ul>
+     </div>
+    </div>
+   </div>
+  </section>
+
+  <!-- tabs -->
+  <section class="tabs">
+   <div class="tabs__wrapper bg-gray">
+    <div class="container">
+     <div class="tabs__inner">
+      <ul class="tabs__bar">
+       <li class="tabs__bar_item">
+        <p class="tabs__bar_button">ДОСТАВКА</p>
+       </li>
+       <li class="tabs__bar_item">
+        <p class="tabs__bar_button">ОПЛАТА</p>
+       </li>
+       <li class="tabs__bar_item">
+        <p class="tabs__bar_button">ГАРАНТІЯ</p>
+       </li>
+      </ul>
+      <ul class="tabs__content">
+       <li class="tabs__content_item">
+        <div class="tabs__content_case">
+         <h6 class="tabs__content_title"><span>1.</span> Доставка до відділення пошти або за вказаною вами адресою:</h6>
+         <p>Актуальний статус роботи відділень Нової пошти: <a href="#">список відділень.</a></p>
+         <p>За умови наявності товару відправка здійснюється протягом 1-3 робочих днів.</p>
+         <p>Якщо товар знаходиться на передзамовленні, очікуваний термін відправки становить 5-14 робочих днів.</p>
+         <p>В ціну продукції не включено вартість доставки та пакувальних матеріалів служб поштового зв'язку.</p>
+         <p>Відправка здійснюється лише в робочі дні.</p>
+        </div>
+        <div class="tabs__content_case">
+         <h6 class="tabs__content_title"><span>2.</span> Самовивіз</h6>
+         <div class="tabs__content_block">
+          <img src="images/icons/Icon-location.svg" alt="pin">
+          <p> Майстерня. Пн-Пт. 10.00-19.00. <a href="#">Київ, вул. Генерала Шаповала, 2, офіс 555</a></p>
+         </div>
+         <div class="tabs__content_block">
+          <img src="images/icons/Icon-location.svg" alt="pin">
+          <p>Салон в ТЦ 4room. Пн-Нд. 10.00-20.00. +380 (93) 092 02 60 <a href="#">ТЦ 4room, Київ, Петропавлівська
+            Борщагівка, вул. Петропавлівська, 6</a></p>
+         </div>
+         <div class="tabs__content_block">
+          <img src="images/icons/Icon-location.svg" alt="pin">
+          <p>Салон в ТЦ Аракс. Пн-Нд. 10.00-20.00. +380 (96) 120 50 72 <a href="#">ТЦ Аракс, Київ, вул. Кільцева дорога,
+            110</a></p>
+         </div>
+         <div class="tabs__content_block"><img src="images/icons/Icon-location.svg" alt="pin">
+          <p>Салон в ТЦ Три Слони. Пн-Нд. 11.00-19.00. +380 (96) 120 50 79 <a href="#">ТЦ Три Слони, Львів, вул.
+            Яворівська, 22</a></p>
+         </div>
+        </div>
+       </li>
+       <li class="tabs__content_item">
+        <div class="tabs__content_case">
+         <h6 class="tabs__content_title"><span>2.</span> Самовивіз</h6>
+         <p><img src="images/icons/Icon-location.svg" alt="pin"> Майстерня. Пн-Пт. 10.00-19.00. <a href="#">Київ, вул.
+           Генерала Шаповала, 2, офіс 555</a></p>
+         <p><img src="images/icons/Icon-location.svg" alt="pin"> Салон в ТЦ 4room. Пн-Нд. 10.00-20.00. +380 (93) 092 02
+          60 <a href="#">ТЦ 4room, Київ, Петропавлівська Борщагівка, вул. Петропавлівська, 6</a></p>
+         <p><img src="images/icons/Icon-location.svg" alt="pin"> Салон в ТЦ Аракс. Пн-Нд. 10.00-20.00. +380 (96) 120 50
+          72 <a href="#">ТЦ Аракс, Київ, вул. Кільцева дорога, 110</a></p>
+         <p><img src="images/icons/Icon-location.svg" alt="pin"> Салон в ТЦ Три Слони. Пн-Нд. 11.00-19.00. +380 (96) 120
+          50 79 <a href="#">ТЦ Три Слони, Львів, вул. Яворівська, 22</a></p>
+        </div>
+       </li>
+       <li class="tabs__content_item">
+        <div class="tabs__content_case">
+         <h6 class="tabs__content_title"><span>1.</span> Доставка до відділення пошти або за вказаною вами адресою:</h6>
+         <p>Актуальний статус роботи відділень Нової пошти: <a href="#">список відділень.</a></p>
+         <p>За умови наявності товару відправка здійснюється протягом 1-3 робочих днів.</p>
+         <p>Якщо товар знаходиться на передзамовленні, очікуваний термін відправки становить 5-14 робочих днів.</p>
+         <p>В ціну продукції не включено вартість доставки та пакувальних матеріалів служб поштового зв'язку.</p>
+         <p>Відправка здійснюється лише в робочі дні.</p>
+        </div>
+       </li>
+      </ul>
+     </div>
+    </div>
+   </div>
+  </section>
+
   <!-- featured-product -->
   <section class="featured-product">
    <div class="featured-product__wrapper">
     <div class="container">
      <div class="featured-product__inner">
       <h4 class="featured-product__title">ВАМ ТАКОЖ МОЖЕ СПОДОБАТИСЯ</h4>
-       <div class="featured-product__swiper swiper">
-        <div class="featured-product__swiper-wrapper swiper-wrapper">
-         <div class="featured-product__swiper-slide swiper-slide">
-          <div class="featured-product__swiper_image">
-           <img src="images/new-collection-one.jpg" alt="item">
-          </div>
-          <div class="featured-product__swiper_content">
-           <p class="featured-product__swiper_title fz-22 fw-500 text-center">Impression</p>
-           <p class="featured-product__swiper_price fz-20 text-center">від $330</p>
-          </div>
+      <div class="featured-product__swiper swiper">
+       <div class="featured-product__swiper-wrapper swiper-wrapper">
+        <div class="featured-product__swiper-slide swiper-slide">
+         <div class="featured-product__swiper_image">
+          <img src="images/new-collection-one.jpg" alt="item">
          </div>
-         <div class="featured-product__swiper-slide swiper-slide">
-          <div class="featured-product__swiper_image">
-           <img src="images/new-collection-two.jpg" alt="item">
-          </div>
-          <div class="featured-product__swiper_content">
-           <p class="featured-product__swiper_title fz-22 fw-500 text-center">Rime</p>
-           <p class="featured-product__swiper_price fz-20 text-center">від $290</p>
-          </div>
+         <div class="featured-product__swiper_content">
+          <p class="featured-product__swiper_title fz-22 fw-500 text-center">Impression</p>
+          <p class="featured-product__swiper_price fz-20 text-center">від $330</p>
          </div>
-         <div class="featured-product__swiper-slide swiper-slide">
-          <div class="featured-product__swiper_image">
-           <img src="images/new-collection-three.jpg" alt="item">
-          </div>
-          <div class="featured-product__swiper_content">
-           <p class="featured-product__swiper_title fz-22 fw-500 text-center">Rime 2</p>
-           <p class="featured-product__swiper_price fz-20 text-center">від $290</p>
-          </div>
+        </div>
+        <div class="featured-product__swiper-slide swiper-slide">
+         <div class="featured-product__swiper_image">
+          <img src="images/new-collection-two.jpg" alt="item">
          </div>
-         <div class="featured-product__swiper-slide swiper-slide">
-          <div class="featured-product__swiper_image">
-           <img src="images/new-collection-one.jpg" alt="item">
-          </div>
-          <div class="featured-product__swiper_content">
-           <p class="featured-product__swiper_title fz-22 fw-500 text-center">Impression</p>
-           <p class="featured-product__swiper_price fz-20 text-center">від $330</p>
-          </div>
+         <div class="featured-product__swiper_content">
+          <p class="featured-product__swiper_title fz-22 fw-500 text-center">Rime</p>
+          <p class="featured-product__swiper_price fz-20 text-center">від $290</p>
+         </div>
+        </div>
+        <div class="featured-product__swiper-slide swiper-slide">
+         <div class="featured-product__swiper_image">
+          <img src="images/new-collection-three.jpg" alt="item">
+         </div>
+         <div class="featured-product__swiper_content">
+          <p class="featured-product__swiper_title fz-22 fw-500 text-center">Rime 2</p>
+          <p class="featured-product__swiper_price fz-20 text-center">від $290</p>
+         </div>
+        </div>
+        <div class="featured-product__swiper-slide swiper-slide">
+         <div class="featured-product__swiper_image">
+          <img src="images/new-collection-one.jpg" alt="item">
+         </div>
+         <div class="featured-product__swiper_content">
+          <p class="featured-product__swiper_title fz-22 fw-500 text-center">Impression</p>
+          <p class="featured-product__swiper_price fz-20 text-center">від $330</p>
          </div>
         </div>
        </div>
-       <div class="featured-product__swiper-pagination dots-primary swiper-pagination"></div>
-       <a href="#" class="featured-product__button button__return">в каталог</a>
+      </div>
+      <div class="featured-product__swiper-button-prev swiper-button-prev swiper-button-primary">
+       <div class="arrow-primary">
+        <img src="images/icons/button-arrow-left.svg" alt="arrow-left">
+       </div>
+      </div>
+      <div class="featured-product__swiper-button-next swiper-button-next swiper-button-primary">
+       <div class="arrow-primary">
+        <img src="images/icons/button-arrow-right.svg" alt="arrow-right">
+       </div>
+      </div>
+      <div class="featured-product__swiper-pagination dots-primary swiper-pagination"></div>
+      <a href="#" class="featured-product__button button__return">в каталог</a>
      </div>
     </div>
    </div>
@@ -427,6 +605,7 @@
  </footer>
 
  <script src="js/swiper-bundle.min.js"></script>
+ <script src="js/fancybox.js"></script>
  <script src="js/global.js" defer></script>
 </body>
 

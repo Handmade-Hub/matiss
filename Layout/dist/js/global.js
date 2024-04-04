@@ -253,7 +253,7 @@ document.addEventListener('DOMContentLoaded', function () {
  if (document.querySelectorAll('.contact-form').length) {
   const form = document.querySelector('.contact-form form');
   const requiredFields = form.querySelectorAll('.contact-form__field--required');
-  
+
   form.addEventListener('submit', e => {
    requiredFields.forEach(field => {
     const input = field.querySelector('input');
@@ -272,9 +272,85 @@ document.addEventListener('DOMContentLoaded', function () {
   const swiper = new Swiper('.featured-product__swiper', {
    speed: 1000,
    spaceBetween: 32,
-   slidesPerView: 3,
+   slidesPerView: 1,
+   breakpoints: {
+    576: {
+     slidesPerView: 2,
+    },
+    992: {
+     slidesPerView: 3,
+    }
+   },
+   navigation: {
+    nextEl: '.featured-product__swiper-button-next',
+    prevEl: '.featured-product__swiper-button-prev',
+   },
    pagination: {
     el: '.featured-product__swiper-pagination',
+   },
+  });
+ }
+
+ // tabs
+ if (document.querySelectorAll('.tabs').length) {
+  const barItems = document.querySelectorAll('.tabs__bar_item');
+  const contentItems = document.querySelectorAll('.tabs__content_item');
+
+  // add active first elements
+  const barItemFirst = document.querySelector('.tabs__bar_item');
+  const contentItemFirst = document.querySelector('.tabs__content_item');
+  barItemFirst.classList.add('active');
+  contentItemFirst.classList.add('active');
+
+  // add data atributes
+  for (let i = 0; i < barItems.length; i++) {
+   barItems[i].setAttribute('data-bar', i);
+  }
+  for (let i = 0; i < contentItems.length; i++) {
+   contentItems[i].setAttribute('data-content', i);
+  }
+
+  // change active tab
+  barItems.forEach(item => {
+   item.addEventListener('click', function () {
+    barItems.forEach(m => {
+     m.classList.remove('active');
+    })
+    const itemAttr = item.getAttribute('data-bar');
+    for (let i = 0; i < contentItems.length; i++) {
+     const contentAttr = contentItems[i].getAttribute('data-content');
+     console.log(itemAttr == contentAttr);
+     if (itemAttr == contentAttr) {
+      item.classList.add('active');
+      contentItems[i].classList.add('active');
+     }
+     else {
+      contentItems[i].classList.remove('active');
+     }
+    }
+   })
+  })
+ }
+
+ // product popup and swiper
+ if (document.querySelectorAll('.product').length) {
+  // popup
+  Fancybox.bind('[data-fancybox]', {
+   Toolbar: {
+    display: {
+      left: [],
+      middle: [],
+      right: ["close"],
+    },
+  },
+  });
+
+  // swiper
+  const swiper = new Swiper('.product__swiper', {
+   speed: 1000,
+   spaceBetween: 10,
+   pagination: {
+    el: '.product__swiper-pagination',
    },
   });
  }
