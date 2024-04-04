@@ -338,11 +338,11 @@ document.addEventListener('DOMContentLoaded', function () {
   Fancybox.bind('[data-fancybox]', {
    Toolbar: {
     display: {
-      left: [],
-      middle: [],
-      right: ["close"],
+     left: [],
+     middle: [],
+     right: ["close"],
     },
-  },
+   },
   });
 
   // swiper
@@ -353,6 +353,17 @@ document.addEventListener('DOMContentLoaded', function () {
     el: '.product__swiper-pagination',
    },
   });
+ }
+
+ // product select
+ if (document.querySelectorAll('product__select').length) {
+  const selectItems = document.querySelectorAll('product__select');
+  
+  selectItems.forEach(select => {
+   const panel = select.querySelector('.product__select_panel');
+   const list = select.querySelector('.product__select_list');
+   
+  })
  }
 
 });
