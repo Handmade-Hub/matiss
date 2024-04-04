@@ -356,13 +356,57 @@ document.addEventListener('DOMContentLoaded', function () {
  }
 
  // product select
- if (document.querySelectorAll('product__select').length) {
-  const selectItems = document.querySelectorAll('product__select');
-  
+ if (document.querySelectorAll('.product__select').length) {
+  const selectItems = document.querySelectorAll('.product__select');
+
   selectItems.forEach(select => {
    const panel = select.querySelector('.product__select_panel');
+   let spanValue = panel.querySelector('span');
    const list = select.querySelector('.product__select_list');
-   
+   const items = select.querySelectorAll('.product__select_item');
+   //open - close select
+   panel.addEventListener('click', e => {    
+    if (!panel.classList.contains('active')) {
+     panel.classList.add('active');
+     list.classList.add('active');
+     list.style.maxHeight = list.scrollHeight + 'px';
+    } else {
+     panel.classList.remove('active');
+     list.classList.remove('active');
+     list.style.maxHeight = null;
+    }
+   })
+   // close select
+   document.addEventListener('click', e => {
+    if (!select.contains(e.target)) {
+     panel.classList.remove('active');
+     list.classList.remove('active');
+     list.style.maxHeight = null;
+    }
+   })
+   // change selects value
+   items.forEach(item => {
+    item.addEventListener('click', function(){
+     panel.setAttribute('data-content', item.innerText);
+     if (spanValue.classList.contains('--default')) spanValue.classList.remove('--default');
+     spanValue.innerText = item.innerText;
+     if (select.classList.contains('error')) select.classList.remove('error');
+     // multichoice
+     if (item.classList.contains('multichoice')) {
+      console.log('true');
+     }
+    })
+   })
+   // selection check
+   const buttons = document.querySelectorAll('.product__buttons');
+   buttons.forEach(button => {
+    button.addEventListener('click', e => {
+     if (spanValue.classList.contains('--default')) {
+      e.preventDefault();
+      select.classList.add('error');
+     }
+    })
+   })
   })
  }
 

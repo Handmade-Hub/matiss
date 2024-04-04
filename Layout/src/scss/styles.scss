@@ -3833,8 +3833,27 @@ button {
  }
  &__select {
   position: relative;
-  &_title{
+  &.error {
+   margin-bottom: 2.8rem;
+   .product__select_error {
+    display: block;
+   }
+  }
+  &:last-of-type {
+   &.error {
+    margin-bottom: 1.4rem;
+   }
+  }
+  &_title {
    margin-bottom: 0.8rem;
+  }
+  &_error {
+   font-size: 1.4rem;
+   line-height: 2.1rem;
+   color: var(--color-red);
+   position: absolute;
+   top: calc(100% + 0.8rem);
+   display: none;
   }
   &_panel {
    cursor: pointer;
@@ -3847,6 +3866,9 @@ button {
    border: 0.1rem solid var(--color-primary);
    span {
     width: 100%;
+    &.--default {
+     color: var(--color-gray);
+    }
    }
    &::after {
     content: '';
@@ -3861,16 +3883,23 @@ button {
     height: 2.4rem;
    }
   }
-  &_list{
-   border: 0.1rem solid var(--color-primary);
+  &_list {
+   border: 0.1rem solid transparent;
+   border-top: none;
    position: absolute;
-   top: calc(100% - 0.1rem);
+   top: 100%;
    left: 0;
    width: 100%;
    background-color: var(--color-white);
    z-index: 2;
+   overflow: hidden;
+   max-height: 0;
+   transition: all var(--duration-normal);
+   &.active {
+    border-color: var(--color-primary);
+   }
   }
-  &_item{
+  &_item {
    padding: 1.2rem;
    cursor: pointer;
    transition: all var(--duration-normal);
@@ -3883,6 +3912,20 @@ button {
     font-size: 1.6rem;
     line-height: 2.4rem;
     font-weight: 500;
+   }
+  }
+  &_multi {
+   display: flex;
+   align-items: center;
+   flex-wrap: wrap;
+   gap: 1.6rem;
+   margin-top: 1.6rem;
+   &-item {
+    width: 100%;
+    max-width: calc(25% - 1.6rem * 3 / 4);
+    padding: 1.2rem;
+    border: 0.1rem solid var(--color-primary);
+    text-align: center;
    }
   }
  }
@@ -3993,10 +4036,10 @@ button {
   background: transparent;
   transition: all var(--duration-normal);
   &:hover {
-  @media (min-width: 768px) {
-   transform: scale(1.02) !important;
+   @media (min-width: 768px) {
+    transform: scale(1.02) !important;
+   }
   }
- }
   &::before {
    content: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAC+SURBVHgB7dZZDoJQDIXhE1fy739TLkVjIhHBAaXtpcn5El4Y2lPCcCUzMzOzMuf7huIxq5/mVvyi+CFY1E6D4odAeTcmvSEqDh/ZGA0KHxEADQ6/J8g/16RC2wP9cm4p9D3YlnOGQu8Dfjp2KGgd9NW+Q0PPgVuFn6BH8NTwJ9kKavwIocYvMWr8GUWNf2So8VICNV7MsSMIGjwEAQHQoCEIbIyKhyChISocIqsRi9pppqUBisesvpmZmVmFK7j9jfMGg3G7AAAAAElFTkSuQmCC');
    position: absolute;
