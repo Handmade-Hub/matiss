@@ -26,6 +26,7 @@
   </a>
  </div>
 
+ <!-- header -->
  <header class="header">
   <div class="header__wrapper">
    <div class="container">
@@ -98,26 +99,26 @@
        <div class="header__search">
         <img src="images/icons/icon-search.svg" alt="search">
        </div>
-       <div class="header__wishlist">
+       <a href="#" class="header__wishlist">
         <img src="images/icons/icon-wishlist.svg" alt="wishlist">
-       </div>
-       <div class="header__cart">
+       </a>
+       <a href="#" class="header__cart">
         <img src="images/icons/icon-cart.svg" alt="cart">
-       </div>
+       </a>
       </div>
      </div>
      <div class="header__icons tablet-up-none">
       <div class="header__wishlist">
        <img src="images/icons/icon-wishlist.svg" alt="wishlist">
       </div>
-      <div class="header__search">
+      <a href="#" class="header__search">
        <img src="images/icons/icon-search.svg" alt="search">
-      </div>
+      </a>
      </div>
      <div class="header__icons tablet-up-none">
-      <div class="header__cart">
+      <a href="#" class="header__cart">
        <img src="images/icons/icon-cart.svg" alt="cart">
-      </div>
+      </a>
       <div class="header__burger">
        <img src="images/icons/icon-burger.svg" alt="burger">
       </div>
@@ -190,8 +191,9 @@
        </div>
       </div>
      </div>
-
     </div>
+   </div>
+  </div>
  </header>
 
  <main class="main">
@@ -293,15 +295,18 @@
         <div class="product__content">
          <h2 class="product__title">Impression</h2>
          <p>Артикул: АA-350</p>
-         <p class="product__price">від<span>$330</span></p>
+         <p class="product__price">від
+          <span class="product__price_normal">$330</span>
+          <!-- <span class="product__price_sale">$165</span> -->
+          <!-- <span class="product__price_last">$330</span> -->
+         </p>
          <div class="product__content_wrap">
           <p>Матеріали: акрил, полотно.</p>
           <p>Примітки: Можливе виготовлення картини в індивідуальному розмірі та кольорі.</p>
          </div>
          <div class="product__select">
           <p class="product__select_title">Оберіть розмір*</p>
-          <div class="product__select_panel" data-content="Обрати"><span
-            class="--default">Обрати</span></div>
+          <div class="product__select_panel" data-content="Обрати"><span class="--default">Обрати</span></div>
           <ul class="product__select_list">
            <li class="product__select_item">
             <p>20x20</p>
@@ -355,23 +360,23 @@
           </ul>
           <ul data-type="0" class="product__select_multi">
            <li class="product__select_multi-item">
-            <p>Чорна</p>
+            Чорна
            </li>
            <li class="product__select_multi-item">
-            <p>Біла</p>
+            Біла
            </li>
            <li class="product__select_multi-item">
-            <p>Золота</p>
+            Золота
            </li>
            <li class="product__select_multi-item">
-            <p>Срібна</p>
+            Срібна
            </li>
           </ul>
           <p class="product__select_error">Будь-ласка, оберіть колір рами</p>
          </div>
         </div>
         <div class="product__buttons">
-         <a href="#" class="product__button button__primary">Додати в кошик</a>
+         <a href="#" class="product__button button__primary add-to-cart">Додати в кошик</a>
          <a href="#" class="product__button button__outline">Купити в один клік</a>
         </div>
        </div>
@@ -548,6 +553,43 @@
       </div>
       <div class="featured-product__swiper-pagination dots-primary swiper-pagination"></div>
       <a href="#" class="featured-product__button button__return">в каталог</a>
+     </div>
+    </div>
+   </div>
+  </section>
+
+  <!-- modal-add-to-cart -->
+  <section class="modal-add-to-cart">
+   <div class="modal-add-to-cart__wrapper bg-gray">
+    <button class="modal-add-to-cart__close modal-add-to-cart__button_close">
+     <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 36L36 12M12 12L36 36" stroke="black" stroke-width="2" stroke-linecap="round"
+       stroke-linejoin="round" />
+     </svg>
+    </button>
+    <div class="container">
+     <div class="modal-add-to-cart__inner">
+      <h4 class="modal-add-to-cart__title">Товар додано до кошика!</h4>
+      <div class="modal-add-to-cart__item">
+       <div class="modal-add-to-cart__content">
+        <div class="modal-add-to-cart__image">
+         <img src="images/paintings/one.jpg" alt="image">
+        </div>
+        <div class="modal-add-to-cart__case">
+         <div class="modal-add-to-cart__case_block">
+          <h6 class="modal-add-to-cart__case_title">Impression</h6>
+          <p>Розмір: 80х120 см</p>
+          <p>Рама: біла деревʼяна</p>
+         </div>
+         <p class="modal-add-to-cart__case_quantity">Кількість: 1</p>
+        </div>
+       </div>
+       <p class="modal-add-to-cart__price">$195</p>
+      </div>
+      <div class="modal-add-to-cart__buttons">
+       <button class="modal-add-to-cart__button button__outline modal-add-to-cart__button_close">продовжити покупки</button>
+       <a href="#" class="modal-add-to-cart__button button__primary">оформити замовлення</a>
+      </div>
      </div>
     </div>
    </div>

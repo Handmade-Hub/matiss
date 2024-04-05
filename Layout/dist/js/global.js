@@ -149,7 +149,6 @@ document.addEventListener('DOMContentLoaded', function () {
    } else if ((offset - scrollDistance >= bottomDistance && offset - scrollDistance < 0)) {
     countItems();
     clearInterval(scrollPage);
-    console.log('start')
    }
   }, 10);
  }
@@ -319,7 +318,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const itemAttr = item.getAttribute('data-bar');
     for (let i = 0; i < contentItems.length; i++) {
      const contentAttr = contentItems[i].getAttribute('data-content');
-     console.log(itemAttr == contentAttr);
      if (itemAttr == contentAttr) {
       item.classList.add('active');
       contentItems[i].classList.add('active');
@@ -358,14 +356,16 @@ document.addEventListener('DOMContentLoaded', function () {
  // product select
  if (document.querySelectorAll('.product__select').length) {
   const selectItems = document.querySelectorAll('.product__select');
+  const buttonAdd = document.querySelector('.add-to-cart');
 
   selectItems.forEach(select => {
    const panel = select.querySelector('.product__select_panel');
    let spanValue = panel.querySelector('span');
    const list = select.querySelector('.product__select_list');
    const items = select.querySelectorAll('.product__select_item');
-   //open - close select
-   panel.addEventListener('click', e => {    
+   const multiLists = select.querySelectorAll('.product__select_multi');
+   // open - close select
+   panel.addEventListener('click', e => {
     if (!panel.classList.contains('active')) {
      panel.classList.add('active');
      list.classList.add('active');
@@ -386,26 +386,101 @@ document.addEventListener('DOMContentLoaded', function () {
    })
    // change selects value
    items.forEach(item => {
-    item.addEventListener('click', function(){
+    item.addEventListener('click', function () {
      panel.setAttribute('data-content', item.innerText);
      if (spanValue.classList.contains('--default')) spanValue.classList.remove('--default');
      spanValue.innerText = item.innerText;
      if (select.classList.contains('error')) select.classList.remove('error');
-     // multichoice
+     if (buttonAdd.classList.contains('error')) buttonAdd.classList.remove('error'); 
+     // check on multichoice for item
      if (item.classList.contains('multichoice')) {
-      console.log('true');
+      // check on double click for the active element
+      if (!panel.classList.contains('multichoice')) {
+       panel.classList.add('multichoice');
+       panel.setAttribute('data-choised', null);
+      }
+     } else {
+      panel.classList.remove('multichoice');
+      panel.removeAttribute('data-choised');
+      // clear class choised for item
+      multiLists.forEach(multiList => {
+       const multiItems = multiList.querySelectorAll('li');
+       multiItems.forEach(multiItem => {
+        if (multiItem.classList.contains('choised')) multiItem.classList.remove('choised');
+       })
+      })
+     }
+     // multichoice
+     if (multiLists.length) {
+      const itemAttr = item.getAttribute('data-type');
+      multiLists.forEach(multiList => {
+       const multiItems = multiList.querySelectorAll('li');
+       // choise multi item
+       multiList.addEventListener('click', e => {
+        multiItems.forEach(multiItem => {
+         if (e.target == multiItem) {
+          multiItem.classList.add('choised');
+          panel.setAttribute('data-choised', multiItem.innerText);
+          if (select.classList.contains('error')) select.classList.remove('error');
+          if (buttonAdd.classList.contains('error')) buttonAdd.classList.remove('error');
+         } else {
+          if (e.target != e.currentTarget) multiItem.classList.remove('choised');
+         }
+        })
+       })
+       // add class choised for multi list
+       multiList.classList.remove('choised');
+       const multiListAttr = multiList.getAttribute('data-type');
+       if (multiListAttr != null && multiListAttr == itemAttr) {
+        multiList.classList.add('choised');
+       }
+      });
      }
     })
    })
    // selection check
-   const buttons = document.querySelectorAll('.product__buttons');
+   const buttons = document.querySelectorAll('.product__button');
    buttons.forEach(button => {
     button.addEventListener('click', e => {
+     // check on selected
      if (spanValue.classList.contains('--default')) {
       e.preventDefault();
       select.classList.add('error');
+      buttonAdd.classList.add('error');
+     }
+     // check on selected multichoce
+     if (panel.classList.contains('multichoice') && panel.getAttribute('data-choised') == 'null') {
+      e.preventDefault();
+      select.classList.add('error');
+      buttonAdd.classList.add('error');
      }
     })
+   })
+  })
+ }
+
+ // add to cart modal
+ if (document.querySelectorAll('.add-to-cart').length && document.querySelectorAll('.modal-add-to-cart').length) {
+  const button = document.querySelector('.add-to-cart');
+  const modal = document.querySelector('.modal-add-to-cart');
+  const buttonClose = document.querySelectorAll('.modal-add-to-cart__button_close');
+  const body = document.body;
+  const cartIcon = document.querySelectorAll('.header__cart');
+  // open modal
+  button.addEventListener('click', e => {
+   if (!button.classList.contains('error')) {
+    modal.classList.add('open');
+    body.classList.add('menu-open');
+    cartIcon.forEach(icon => {
+     icon.classList.add('not-empty');
+    })
+   }
+  })
+  // close modal
+  buttonClose.forEach(button => {
+   button.addEventListener('click', e => {
+    modal.classList.remove('open');
+    body.classList.remove('menu-open');
    })
   })
  }
