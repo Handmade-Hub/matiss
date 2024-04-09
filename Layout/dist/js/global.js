@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
+ const screenWidth = window.screen.width;
 
  // header drop-down
  if (document.querySelectorAll('.header__drop-down').length) {
@@ -213,7 +214,6 @@ document.addEventListener('DOMContentLoaded', function () {
  }
 
  // description accordion
- const screenWidth = window.screen.width;
  if (document.querySelectorAll('.description').length) {
   const wrapper = document.querySelector('.description__wrapper');
   const button = wrapper.querySelector('.description__button');
@@ -227,13 +227,17 @@ document.addEventListener('DOMContentLoaded', function () {
   });
  }
 
- // filters drop-down
+ // filters
  if (document.querySelectorAll('.filters').length) {
   const filtersItems = document.querySelectorAll('.filters__item');
+  const choosedBlock = document.querySelector('.filters__choosed');
+  const choosedList = document.querySelector('.filters__choosed_list');
 
   filtersItems.forEach(item => {
    const menu = item.querySelector('.filters__item_list');
+   
    if (menu != null && menu != undefined) {
+    // filters drop-down
     item.addEventListener('mouseover', evt => {
      item.classList.add('active');
      menu.classList.add('active');
@@ -243,6 +247,38 @@ document.addEventListener('DOMContentLoaded', function () {
      item.classList.remove('active')
      menu.classList.remove('active')
      menu.style.maxHeight = null;
+    })
+    // filters choose
+    if (menu.querySelectorAll('.filters__item_option').length) {
+     const options = menu.querySelectorAll('.filters__item_option');
+     options.forEach(option => {
+      // add choosed item
+      option.addEventListener('click', function () {
+       if (choosedBlock.classList.contains('empty')) choosedBlock.classList.remove('empty');
+       let li = document.createElement('li');
+       li.classList.add('filters__choosed_item');
+       li.innerHTML = `
+       <span>${option.textContent}</span>
+       <button></button>
+       `
+       choosedList.appendChild(li);
+       // remove item
+       const closeButton = li.querySelector('button');
+       closeButton.addEventListener('click', function() {
+        li.remove();
+        if (!choosedList.querySelectorAll('li').length) choosedBlock.classList.add('empty');
+       })
+      })
+     })
+    }
+    // clear all choosed filters
+    const clearButton = document.querySelector('.filters__choosed_clear');
+    clearButton.addEventListener('click', function() {
+     choosedBlock.classList.add('empty');
+     const choosedItem = choosedList.querySelectorAll('li');
+     choosedItem.forEach(element => {
+      element.remove();
+     })
     })
    }
   })
@@ -391,7 +427,7 @@ document.addEventListener('DOMContentLoaded', function () {
      if (spanValue.classList.contains('--default')) spanValue.classList.remove('--default');
      spanValue.innerText = item.innerText;
      if (select.classList.contains('error')) select.classList.remove('error');
-     if (buttonAdd.classList.contains('error')) buttonAdd.classList.remove('error'); 
+     if (buttonAdd.classList.contains('error')) buttonAdd.classList.remove('error');
      // check on multichoice for item
      if (item.classList.contains('multichoice')) {
       // check on double click for the active element
@@ -457,6 +493,22 @@ document.addEventListener('DOMContentLoaded', function () {
     })
    })
   })
+ }
+
+ // short product title
+ if (document.querySelectorAll('.product__title').length && screenWidth > 991) {
+  const title = document.querySelector('.product__title');
+  const text = title.textContent;
+  const shortText = text.slice(0, 18);
+  if (text.split('').length > 17) {
+   title.innerText = shortText + '...'
+   title.addEventListener('mouseover', function() {
+    title.innerHTML = text;
+   })
+   title.addEventListener('mouseout', function() {
+    title.innerText = shortText + '...'
+   })
+  }
  }
 
  // add to cart modal

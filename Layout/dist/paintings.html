@@ -245,7 +245,7 @@
          </ul>
         </div>
        </li>
-       <li class="filters__item">
+       <li class="filters__item filters__item--range">
         <div class="filters__item_select">
          <span>ЦІНА</span>
          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -253,8 +253,15 @@
            stroke-linejoin="round" />
          </svg>
         </div>
-        <div class="filters__item_list">
-         <input type="range" min="0" max="600">
+        <div class="filters__item_list filters__item_list--range">
+          <div class="filters__item_range">
+            <input type="range" min="0" max="600">
+            <input type="range" min="0" max="600">
+          </div>
+         <div class="filters__item_case">
+          <p>$<span class="filters__item_min">150</span> - $ <span class="filters__item_max">400</span></p>
+          <button>Застосувати</button>
+         </div>
         </div>
        </li>
        <li class="filters__item">
@@ -409,6 +416,11 @@
         </div>
        </li>
       </ul>
+     </div>
+     <div class="filters__choosed empty">
+      <ul class="filters__choosed_list">
+      </ul>
+      <button class="filters__choosed_clear">Очистити фільтри</button>
      </div>
     </div>
    </div>
