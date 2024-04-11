@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
  const screenWidth = window.screen.width;
+ const body = document.body;
 
  // header drop-down
  if (document.querySelectorAll('.header__drop-down').length) {
@@ -25,7 +26,6 @@ document.addEventListener('DOMContentLoaded', function () {
   const button = document.querySelector('.header__burger');
   const menu = document.querySelector('.header-mobile__wrapper');
   const close = document.querySelector('.header-mobile__close');
-  const body = document.body;
 
   button.addEventListener('click', e => {
    menu.classList.add('menu-open');
@@ -66,7 +66,24 @@ document.addEventListener('DOMContentLoaded', function () {
     }
    })
   })
+ }
 
+ //  search modal
+ if (document.querySelectorAll('.header__search').length && document.querySelectorAll('.search-modal__wrapper').length) {
+  const buttons = document.querySelectorAll('.header__search');
+  const modal = document.querySelector('.search-modal__wrapper');
+  const buttonClose = document.querySelector('.search-modal__button_close');
+
+  buttons.forEach(button => {
+   button.addEventListener('click', function() {
+    modal.classList.add('open');
+    body.classList.add('menu-open');
+   })
+  })
+  buttonClose.addEventListener('click', function() {
+   modal.classList.remove('open');
+   body.classList.remove('menu-open');
+  })
  }
 
  // banner swiper
@@ -232,10 +249,10 @@ document.addEventListener('DOMContentLoaded', function () {
   const filtersItems = document.querySelectorAll('.filters__item');
   const choosedBlock = document.querySelector('.filters__choosed');
   const choosedList = document.querySelector('.filters__choosed_list');
+  let arr = [];
 
   filtersItems.forEach(item => {
    const menu = item.querySelector('.filters__item_list');
-   
    if (menu != null && menu != undefined) {
     // filters drop-down
     item.addEventListener('mouseover', evt => {
@@ -251,29 +268,37 @@ document.addEventListener('DOMContentLoaded', function () {
     // filters choose
     if (menu.querySelectorAll('.filters__item_option').length) {
      const options = menu.querySelectorAll('.filters__item_option');
+
      options.forEach(option => {
       // add choosed item
       option.addEventListener('click', function () {
-       if (choosedBlock.classList.contains('empty')) choosedBlock.classList.remove('empty');
-       let li = document.createElement('li');
-       li.classList.add('filters__choosed_item');
-       li.innerHTML = `
-       <span>${option.textContent}</span>
-       <button></button>
-       `
-       choosedList.appendChild(li);
-       // remove item
-       const closeButton = li.querySelector('button');
-       closeButton.addEventListener('click', function() {
-        li.remove();
-        if (!choosedList.querySelectorAll('li').length) choosedBlock.classList.add('empty');
-       })
+       if (!arr.includes(option.textContent)) {
+        arr.push(option.textContent);
+        if (choosedBlock.classList.contains('empty')) choosedBlock.classList.remove('empty');
+        let li = document.createElement('li');
+        li.classList.add('filters__choosed_item');
+        li.innerHTML = `
+        <span>${option.textContent}</span>
+        <button></button>
+        `
+        choosedList.appendChild(li);
+        // remove item
+        const closeButton = li.querySelector('button');
+        closeButton.addEventListener('click', function () {
+         li.remove();
+         if (!choosedList.querySelectorAll('li').length) choosedBlock.classList.add('empty');
+         arr = arr.filter(function (m) {
+          return m != li.querySelector('span').textContent;
+         })
+        })
+       }
       })
      })
     }
     // clear all choosed filters
     const clearButton = document.querySelector('.filters__choosed_clear');
-    clearButton.addEventListener('click', function() {
+    clearButton.addEventListener('click', function () {
+     arr = [];
      choosedBlock.classList.add('empty');
      const choosedItem = choosedList.querySelectorAll('li');
      choosedItem.forEach(element => {
@@ -282,6 +307,122 @@ document.addEventListener('DOMContentLoaded', function () {
     })
    }
   })
+  // filter price range
+  if (document.querySelectorAll('.filters__item_list--range').length) {
+   const rangeWrapper = document.querySelector('.filters__item_list--range');
+   const fromSlider = rangeWrapper.querySelector('#fromSlider');
+   const toSlider = rangeWrapper.querySelector('#toSlider');
+   const fieldMin = rangeWrapper.querySelector('.filters__item_min');
+   const fieldMax = rangeWrapper.querySelector('.filters__item_max');
+   const submitButton = rangeWrapper.querySelector('.filters__item_case > button');
+   let priceValue, lastPrice;
+
+   // update page
+   fieldMin.textContent = fromSlider.value;
+   fieldMax.textContent = toSlider.value;
+
+   // change value
+   function controlFromSlider(fromSlider, toSlider) {
+    const [from, to] = getParsed(fromSlider, toSlider);
+    fillSlider(fromSlider, toSlider, '#ffffff', '#000000', toSlider);
+    if (from > to) {
+     fromSlider.value = to;
+     fieldMax.textContent = to;
+    } else {
+     fromSlider.value = from;
+     fieldMin.textContent = from;
+    }
+   }
+
+   function controlToSlider(fromSlider, toSlider) {
+    const [from, to] = getParsed(fromSlider, toSlider);
+    fillSlider(fromSlider, toSlider, '#ffffff', '#000000', toSlider);
+    setToggleAccessible(toSlider);
+    if (from <= to) {
+     toSlider.value = to;
+     fieldMax.textContent = to;
+    } else {
+     toSlider.value = from;
+     fieldMin.textContent = from;
+    }
+   }
+
+   function getParsed(currentFrom, currentTo) {
+    const from = parseInt(currentFrom.value, 10);
+    const to = parseInt(currentTo.value, 10);
+    return [from, to];
+   }
+
+   function fillSlider(from, to, sliderColor, rangeColor, controlSlider) {
+    const rangeDistance = to.max - to.min;
+    const fromPosition = from.value - to.min;
+    const toPosition = to.value - to.min;
+    controlSlider.style.background = `linear-gradient(
+    to right,
+    ${sliderColor} 0%,
+    ${sliderColor} ${(fromPosition) / (rangeDistance) * 100}%,
+    ${rangeColor} ${((fromPosition) / (rangeDistance)) * 100}%,
+    ${rangeColor} ${(toPosition) / (rangeDistance) * 100}%, 
+    ${sliderColor} ${(toPosition) / (rangeDistance) * 100}%, 
+    ${sliderColor} 100%)`;
+   }
+
+   function setToggleAccessible(currentTarget) {
+    const toSlider = document.querySelector('#toSlider');
+    if (Number(currentTarget.value) <= 0) {
+     toSlider.style.zIndex = 2;
+    } else {
+     toSlider.style.zIndex = 0;
+    }
+   }
+
+   fillSlider(fromSlider, toSlider, '#ffffff', '#000000', toSlider);
+   setToggleAccessible(toSlider);
+   fromSlider.oninput = () => controlFromSlider(fromSlider, toSlider);
+   toSlider.oninput = () => controlToSlider(fromSlider, toSlider);
+
+   // submit button
+   submitButton.addEventListener('click', function () {
+    // update price
+    priceValue = `$${fromSlider.value} - $${toSlider.value}`;
+    // not price in array
+    if (!arr.includes('thereIsPrice')) {
+     arr.push('thereIsPrice');
+     arr.push(priceValue);
+     lastPrice = priceValue;
+     if (choosedBlock.classList.contains('empty')) choosedBlock.classList.remove('empty');
+     let li = document.createElement('li');
+     li.classList.add('filters__choosed_item', 'filters__choosed_item--price');
+     li.innerHTML =
+      `<span>${priceValue}</span>
+      <button></button>`
+     choosedList.appendChild(li);
+
+     // remove item
+     const closeButton = li.querySelector('button');
+     closeButton.addEventListener('click', function () {
+      li.remove();
+      arr = arr.filter(function (c) {
+       return c != 'thereIsPrice';
+      });
+      arr = arr.filter(function (m) {
+       return m != lastPrice;
+      });
+      if (!choosedList.querySelectorAll('li').length) choosedBlock.classList.add('empty');
+      console.log(arr)
+     })
+     // there is price but different
+    } else if (priceValue != lastPrice) {
+     let price = document.querySelector('.filters__choosed_item--price > span');
+     price.textContent = priceValue;
+     arr.push(priceValue);
+     arr = arr.filter(function (m) {
+      return m != lastPrice;
+     });
+     lastPrice = priceValue;
+    }
+   })
+  }
  }
 
  // contact form error
@@ -502,10 +643,10 @@ document.addEventListener('DOMContentLoaded', function () {
   const shortText = text.slice(0, 18);
   if (text.split('').length > 17) {
    title.innerText = shortText + '...'
-   title.addEventListener('mouseover', function() {
+   title.addEventListener('mouseover', function () {
     title.innerHTML = text;
    })
-   title.addEventListener('mouseout', function() {
+   title.addEventListener('mouseout', function () {
     title.innerText = shortText + '...'
    })
   }
@@ -516,7 +657,6 @@ document.addEventListener('DOMContentLoaded', function () {
   const button = document.querySelector('.add-to-cart');
   const modal = document.querySelector('.modal-add-to-cart');
   const buttonClose = document.querySelectorAll('.modal-add-to-cart__button_close');
-  const body = document.body;
   const cartIcon = document.querySelectorAll('.header__cart');
   // open modal
   button.addEventListener('click', e => {
