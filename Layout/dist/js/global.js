@@ -269,7 +269,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // filters choose
     if (menu.querySelectorAll('.filters__item_option').length) {
      const options = menu.querySelectorAll('.filters__item_option');
-
      options.forEach(option => {
       // add choosed item
       option.addEventListener('click', function () {
@@ -435,6 +434,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const choosedBlock = document.querySelector('.filters__choosed');
   const choosedList = document.querySelector('.filters__choosed_list');
   const clearButton = document.querySelector('.filters__choosed_clear');
+  let priceField = document.querySelector('.filters__choosed_item--price span');
   let arr = [];
 
   // open & close filter menu
@@ -475,6 +475,124 @@ document.addEventListener('DOMContentLoaded', function () {
    })
   })
 
+  // filter price range
+  if (document.querySelectorAll('.filters-mobile__item--range').length) {
+   const rangeWrapper = document.querySelector('.filters-mobile__item--range');
+   const fromSlider = rangeWrapper.querySelector('#fromMobileSlider');
+   const toSlider = rangeWrapper.querySelector('#toMobileSlider');
+   const fieldMin = rangeWrapper.querySelector('.filters-mobile__item_min');
+   const fieldMax = rangeWrapper.querySelector('.filters-mobile__item_max');
+   let priceValue, lastPrice;
+
+   // update page
+   fieldMin.textContent = fromSlider.value;
+   fieldMax.textContent = toSlider.value;
+
+   // change value
+   function controlFromSlider(fromSlider, toSlider) {
+    const [from, to] = getParsed(fromSlider, toSlider);
+    fillSlider(fromSlider, toSlider, '#ffffff', '#000000', toSlider);
+    if (from > to) {
+     fromSlider.value = to;
+     fieldMax.textContent = to;
+    } else {
+     fromSlider.value = from;
+     fieldMin.textContent = from;
+    }
+   }
+
+   function controlToSlider(fromSlider, toSlider) {
+    const [from, to] = getParsed(fromSlider, toSlider);
+    fillSlider(fromSlider, toSlider, '#ffffff', '#000000', toSlider);
+    setToggleAccessible(toSlider);
+    if (from <= to) {
+     toSlider.value = to;
+     fieldMax.textContent = to;
+    } else {
+     toSlider.value = from;
+     fieldMin.textContent = from;
+    }
+   }
+
+   function getParsed(currentFrom, currentTo) {
+    const from = parseInt(currentFrom.value, 10);
+    const to = parseInt(currentTo.value, 10);
+    return [from, to];
+   }
+
+   function fillSlider(from, to, sliderColor, rangeColor, controlSlider) {
+    const rangeDistance = to.max - to.min;
+    const fromPosition = from.value - to.min;
+    const toPosition = to.value - to.min;
+    controlSlider.style.background = `linear-gradient(
+     to right,
+     ${sliderColor} 0%,
+     ${sliderColor} ${(fromPosition) / (rangeDistance) * 100}%,
+     ${rangeColor} ${((fromPosition) / (rangeDistance)) * 100}%,
+     ${rangeColor} ${(toPosition) / (rangeDistance) * 100}%, 
+     ${sliderColor} ${(toPosition) / (rangeDistance) * 100}%, 
+     ${sliderColor} 100%)`;
+   }
+
+   function setToggleAccessible(currentTarget) {
+    const toSlider = document.querySelector('#toSlider');
+    if (Number(currentTarget.value) <= 0) {
+     toSlider.style.zIndex = 2;
+    } else {
+     toSlider.style.zIndex = 0;
+    }
+   }
+
+   fillSlider(fromSlider, toSlider, '#ffffff', '#000000', toSlider);
+   setToggleAccessible(toSlider);
+   fromSlider.oninput = () => controlFromSlider(fromSlider, toSlider);
+   toSlider.oninput = () => controlToSlider(fromSlider, toSlider);
+
+   // submit button
+   submitButton.addEventListener('click', function () {
+    if (choosedBlock.classList.contains('empty')) choosedBlock.classList.remove('empty');
+    filter.classList.remove('open');
+    body.classList.remove('menu-open');
+    // update price
+    priceValue = `$${fromSlider.value} - $${toSlider.value}`;
+    priceField = priceValue;
+    // not price in array
+    if (!arr.includes('thereIsPrice')) {
+     arr.push('thereIsPrice');
+     arr.push(priceValue);
+     lastPrice = priceValue;
+     if (choosedBlock.classList.contains('empty')) choosedBlock.classList.remove('empty');
+     let li = document.createElement('li');
+     li.classList.add('filters__choosed_item', 'filters__choosed_item--price');
+     li.innerHTML =
+      `<span>${priceValue}</span>
+      <button></button>`
+     choosedList.appendChild(li);
+     // remove item
+     const closeButton = li.querySelector('button');
+     closeButton.addEventListener('click', function () {
+      li.remove();
+      arr = arr.filter(function (c) {
+       return c != 'thereIsPrice';
+      });
+      arr = arr.filter(function (m) {
+       return m != lastPrice;
+      });
+      if (!choosedList.querySelectorAll('li').length) choosedBlock.classList.add('empty');
+     })
+     // there is price but different
+    } else if (priceValue != lastPrice) {
+     let price = document.querySelector('.filters__choosed_item--price > span');
+     price.textContent = priceValue;
+     arr.push(priceValue);
+     arr = arr.filter(function (m) {
+      return m != lastPrice;
+     });
+     lastPrice = priceValue;
+    }
+   })
+  }
+
   // submit filters
   submitButton.addEventListener('click', function () {
    if (arr.length > 0) {
@@ -482,16 +600,29 @@ document.addEventListener('DOMContentLoaded', function () {
     filter.classList.remove('open');
     body.classList.remove('menu-open');
     const choosedItem = choosedList.querySelectorAll('li');
+    // remove choosed items
     choosedItem.forEach(element => {
-     element.remove();
+     if (!element.classList.contains('filters__choosed_item--price')) element.remove();
     })
+    // create choosed items
     for (let i = 0; i < arr.length; i++) {
-     let li = document.createElement('li');
-     li.classList.add('filters__choosed_item');
-     li.innerHTML =
-      `<span>${arr[i]}</span>
-     <button></button>`
-     choosedList.appendChild(li);
+     if (document.querySelectorAll('.filters-mobile__item--range').length) {
+      if (priceField != null && priceField != arr[i]) {
+       let li = document.createElement('li');
+       li.classList.add('filters__choosed_item');
+       li.innerHTML =
+        `<span>${arr[i]}</span>
+          <button></button>`
+       choosedList.appendChild(li);
+      }
+     } else {
+      let li = document.createElement('li');
+      li.classList.add('filters__choosed_item');
+      li.innerHTML =
+       `<span>${arr[i]}</span>
+          <button></button>`
+      choosedList.appendChild(li);
+     }
     }
     // remove item
     const choosedItems = document.querySelectorAll('.filters__choosed_item');
@@ -504,6 +635,9 @@ document.addEventListener('DOMContentLoaded', function () {
       arr = arr.filter(function (m) {
        return m != choosedItem.querySelector('span').textContent;
       });
+      list.forEach(filterItem => {
+       if (choosedItem.querySelector('span').textContent == filterItem.textContent && filterItem.classList.contains('choosed')) filterItem.classList.remove('choosed');
+      })
      })
     })
    }
@@ -521,125 +655,6 @@ document.addEventListener('DOMContentLoaded', function () {
     if (item.classList.contains('choosed')) item.classList.remove('choosed');
    })
   })
-
-   // filter price range
-   if (document.querySelectorAll('.filters-mobile__item--range').length) {
-    const rangeWrapper = document.querySelector('.filters-mobile__item--range');
-    const fromSlider = rangeWrapper.querySelector('#fromMobileSlider');
-    const toSlider = rangeWrapper.querySelector('#toMobileSlider');
-    const fieldMin = rangeWrapper.querySelector('.filters-mobile__item_min');
-    const fieldMax = rangeWrapper.querySelector('.filters-mobile__item_max');
-    let priceValue, lastPrice;
- 
-    // update page
-    fieldMin.textContent = fromSlider.value;
-    fieldMax.textContent = toSlider.value;
- 
-    // change value
-    function controlFromSlider(fromSlider, toSlider) {
-     const [from, to] = getParsed(fromSlider, toSlider);
-     fillSlider(fromSlider, toSlider, '#ffffff', '#000000', toSlider);
-     if (from > to) {
-      fromSlider.value = to;
-      fieldMax.textContent = to;
-     } else {
-      fromSlider.value = from;
-      fieldMin.textContent = from;
-     }
-    }
- 
-    function controlToSlider(fromSlider, toSlider) {
-     const [from, to] = getParsed(fromSlider, toSlider);
-     fillSlider(fromSlider, toSlider, '#ffffff', '#000000', toSlider);
-     setToggleAccessible(toSlider);
-     if (from <= to) {
-      toSlider.value = to;
-      fieldMax.textContent = to;
-     } else {
-      toSlider.value = from;
-      fieldMin.textContent = from;
-     }
-    }
- 
-    function getParsed(currentFrom, currentTo) {
-     const from = parseInt(currentFrom.value, 10);
-     const to = parseInt(currentTo.value, 10);
-     return [from, to];
-    }
- 
-    function fillSlider(from, to, sliderColor, rangeColor, controlSlider) {
-     const rangeDistance = to.max - to.min;
-     const fromPosition = from.value - to.min;
-     const toPosition = to.value - to.min;
-     controlSlider.style.background = `linear-gradient(
-     to right,
-     ${sliderColor} 0%,
-     ${sliderColor} ${(fromPosition) / (rangeDistance) * 100}%,
-     ${rangeColor} ${((fromPosition) / (rangeDistance)) * 100}%,
-     ${rangeColor} ${(toPosition) / (rangeDistance) * 100}%, 
-     ${sliderColor} ${(toPosition) / (rangeDistance) * 100}%, 
-     ${sliderColor} 100%)`;
-    }
- 
-    function setToggleAccessible(currentTarget) {
-     const toSlider = document.querySelector('#toSlider');
-     if (Number(currentTarget.value) <= 0) {
-      toSlider.style.zIndex = 2;
-     } else {
-      toSlider.style.zIndex = 0;
-     }
-    }
- 
-    fillSlider(fromSlider, toSlider, '#ffffff', '#000000', toSlider);
-    setToggleAccessible(toSlider);
-    fromSlider.oninput = () => controlFromSlider(fromSlider, toSlider);
-    toSlider.oninput = () => controlToSlider(fromSlider, toSlider);
- 
-    // submit button
-    submitButton.addEventListener('click', function () {
-     if (choosedBlock.classList.contains('empty')) choosedBlock.classList.remove('empty');
-    filter.classList.remove('open');
-    body.classList.remove('menu-open');
-     // update price
-     priceValue = `$${fromSlider.value} - $${toSlider.value}`;
-     // not price in array
-     if (!arr.includes('thereIsPrice')) {
-      arr.push('thereIsPrice');
-      arr.push(priceValue);
-      lastPrice = priceValue;
-      if (choosedBlock.classList.contains('empty')) choosedBlock.classList.remove('empty');
-      let li = document.createElement('li');
-      li.classList.add('filters__choosed_item', 'filters__choosed_item--price');
-      li.innerHTML =
-      `<span>${priceValue}</span>
-      <button></button>`
-      choosedList.appendChild(li);
-      
-      // remove item
-      const closeButton = li.querySelector('button');
-      closeButton.addEventListener('click', function () {
-       li.remove();
-       arr = arr.filter(function (c) {
-        return c != 'thereIsPrice';
-       });
-       arr = arr.filter(function (m) {
-        return m != lastPrice;
-       });
-       if (!choosedList.querySelectorAll('li').length) choosedBlock.classList.add('empty');
-      })
-      // there is price but different
-     } else if (priceValue != lastPrice) {
-
-      let price = document.querySelector('.filters__choosed_item--price > span');
-      price.textContent = priceValue;
-      arr.push(priceValue);
-      arr = arr.filter(function (m) {
-       return m != lastPrice;
-      });
-      lastPrice = priceValue;
-     }
-    })
-   } 
  }
 
  // contact form error
