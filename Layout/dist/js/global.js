@@ -86,6 +86,67 @@ document.addEventListener('DOMContentLoaded', function () {
   })
  }
 
+ //  cart modal
+ if (document.querySelectorAll('.cart-modal').length && document.querySelectorAll('.header__cart').length) {
+  const buttonOpen = document.querySelectorAll('.header__cart');
+  const modal = document.querySelector('.cart-modal');
+  const buttonClose = document.querySelector('.cart-modal__close');
+  const cartItems = document.querySelectorAll('.cart-modal__item');
+
+  document.addEventListener('click', e => {
+   if (e.target == modal && modal.classList.contains('open')) {
+    modal.classList.remove('open');
+    body.classList.remove('menu-open');
+   }
+  })
+
+  // show and hide cart
+  buttonOpen.forEach(button => {
+   button.addEventListener('click', function () {
+    modal.classList.add('open');
+    body.classList.add('menu-open');
+   })
+  })
+  buttonClose.addEventListener('click', function () {
+   modal.classList.remove('open');
+   body.classList.remove('menu-open');
+  })
+
+  // quantity
+  cartItems.forEach(cartItem => {
+   const buttonPlus = cartItem.querySelector('.cart-modal__quantity_plus');
+   const buttonMinus = cartItem.querySelector('.cart-modal__quantity_minus');
+   const input = cartItem.querySelector('.cart-modal__quantity_input');
+
+   if (input.value == 99) buttonPlus.classList.add('disabled');
+   if (input.value == 1) buttonMinus.classList.add('disabled');
+
+   input.addEventListener('change', function () {
+    if (input.value >= 99) {
+     buttonPlus.classList.add('disabled');
+     if (buttonMinus.classList.contains('disabled')) buttonMinus.classList.remove('disabled');
+    }
+    if (input.value <= 1) {
+     buttonMinus.classList.add('disabled');
+     if (buttonPlus.classList.contains('disabled')) buttonPlus.classList.remove('disabled');
+    }
+    if (input.value < 1) input.value = 1;
+    if (input.value > 99) input.value = 99;
+   })
+
+   buttonPlus.addEventListener('click', function () {
+    if (input.value < 99) input.value = ++input.value;
+    if (input.value == 99) buttonPlus.classList.add('disabled')
+    if (input.value > 1 && buttonMinus.classList.contains('disabled')) buttonMinus.classList.remove('disabled');
+   })
+   buttonMinus.addEventListener('click', function () {
+    if (input.value > 1) input.value = --input.value;
+    if (input.value == 1) buttonMinus.classList.add('disabled')
+    if (input.value < 99 && buttonPlus.classList.contains('disabled')) buttonPlus.classList.remove('disabled');
+   })
+  })
+ }
+
  // banner swiper
  if (document.querySelectorAll('.banner__swiper').length) {
   const swiper = new Swiper('.banner__swiper', {
