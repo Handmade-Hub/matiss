@@ -385,18 +385,11 @@
      <nav class="breadcrumbs__inner">
       <ul class="breadcrumbs__list">
        <li class="breadcrumbs__item">
-        <a href="/" class="breadcrumbs__item_link fw-500">Головна</a>
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-         <path d="M8 4L15.5 11.5L8 19" stroke="#9A9A9A" stroke-width="1.5" stroke-linecap="round"
+         <path d="M16 20L8.5 12.5L16 5" stroke="#9A9A9A" stroke-width="1.5" stroke-linecap="round"
           stroke-linejoin="round" />
         </svg>
-       </li>
-       <li class="breadcrumbs__item">
-        <p class="breadcrumbs__item_link fw-500">Блог</p>
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-         <path d="M8 4L15.5 11.5L8 19" stroke="#9A9A9A" stroke-width="1.5" stroke-linecap="round"
-          stroke-linejoin="round" />
-        </svg>
+        <a href="#" class="breadcrumbs__item_link fw-500">Продовжити покупки</a>
        </li>
       </ul>
      </nav>
@@ -404,104 +397,99 @@
    </div>
   </div>
 
-  <!-- blog -->
-  <section class="blog">
-   <div class="blog__wrapper">
+  <!-- checkout -->
+  <section class="checkout">
+   <div class="checkout__wrapper">
     <div class="container">
-     <div class="blog__inner">
-      <ul class="blog__list">
-       <li class="blog__item">
-        <div class="blog__item_content">
-         <h3 class="blog__item_title">Наші картини на лайнері, що більший навіть за “Титанік”</h3>
-         <p>Лайнер “Ікона морів”</p>
+     <div class="checkout__inner">
+      <h2 class="checkout__title">Оформити замовлення</h2>
+      <div class="checkout__content">
+       <div class="checkout__case">
+        <div class="checkout__block bg-gray">
+         <p class="checkout__block_number">1</p>
+         <h3 class="checkout__block_title text-center">Контактна інформація</h3>
+         <form class="checkout__block_form">
+          <div class="checkout__block_wrap">
+           <div class="checkout__block_field">
+            <input type="text" name="name" placeholder="Імʼя*" id="name">
+            <label for="name">Імʼя*</label>
+           </div>
+           <div class="checkout__block_field">
+            <input type="text" name="name" placeholder="Телефон*" id="phone">
+            <label for="phone">Телефон*</label>
+           </div>
+          </div>
+          <div class="checkout__block_field">
+           <input type="text" name="name" placeholder="Email" id="email">
+           <label for="email">Email</label>
+          </div>
+          <div class="checkout__block_field">
+           <textarea placeholder="Повідомлення" name="message" id="message"></textarea>
+           <label for="message">Повідомлення</label>
+          </div>
+          <div class="checkout__block_radios">
+           <p>Оберіть додаткові поcлуги</p>
+           <div class="checkout__block_field">
+            <input id="radioOne" type="radio"
+             value="Продовження сюжету на торці + 5% (стандартно торці забарвлені в один колір)">
+            <label for="radioOne">Продовження сюжету на торці + 5% (стандартно торці забарвлені в один колір)</label>
+           </div>
+           <div class="checkout__block_field">
+            <input id="radioTwo" type="radio" value="Зміна кольору/композиції + 10 % (попередньо виконується ескіз)">
+            <label for="radioTwo">Зміна кольору/композиції + 10 % (попередньо виконується ескіз)</label>
+           </div>
+           <div class="checkout__block_field">
+            <input id="radioThree" type="radio" value="Високий підрамник + 15%">
+            <label for="radioThree">Високий підрамник + 15%</label>
+           </div>
+           <div class="checkout__block_field">
+            <input id="radioFour" type="radio" value="Подарункова упаковка + 5%">
+            <label for="radioFour">Подарункова упаковка + 5%</label>
+           </div>
+           <div class="checkout__block_field">
+            <input id="radioFive" type="radio" value="Підпис автора + 0%">
+            <label for="radioFive">Підпис автора + 0%</label>
+           </div>
+          </div>
+         </form>
         </div>
-        <div class="blog__item_media">
-         <img src="images/blog/one.jpg" alt="image">
+        <div class="checkout__block bg-gray">
+         <p class="checkout__block_number">2</p>
+         <h3 class="checkout__block_title text-center">Доставка</h3>
+         <form class="checkout__block_form">
+          <div class="checkout__block_radios">
+           <p>Оберіть додаткові поcлуги</p>
+           <div class="checkout__block_field">
+            <input id="radioOne" type="radio"
+             value="Продовження сюжету на торці + 5% (стандартно торці забарвлені в один колір)">
+            <label for="radioOne">Продовження сюжету на торці + 5% (стандартно торці забарвлені в один колір)</label>
+           </div>
+           <div class="checkout__block_field">
+            <input id="radioTwo" type="radio" value="Зміна кольору/композиції + 10 % (попередньо виконується ескіз)">
+            <label for="radioTwo">Зміна кольору/композиції + 10 % (попередньо виконується ескіз)</label>
+           </div>
+           <div class="checkout__block_field">
+            <input id="radioThree" type="radio" value="Високий підрамник + 15%">
+            <label for="radioThree">Високий підрамник + 15%</label>
+           </div>
+           <div class="checkout__block_field">
+            <input id="radioFour" type="radio" value="Подарункова упаковка + 5%">
+            <label for="radioFour">Подарункова упаковка + 5%</label>
+           </div>
+           <div class="checkout__block_field">
+            <input id="radioFive" type="radio" value="Підпис автора + 0%">
+            <label for="radioFive">Підпис автора + 0%</label>
+           </div>
+          </div>
+         </form>
         </div>
-       </li>
-       <li class="blog__item">
-        <div class="blog__item_content">
-         <h3 class="blog__item_title">Pro Art. Написання інтерʼєрної картини в стилі експресивної абстракції</h3>
-         <p>Телеканал “Дача”</p>
-        </div>
-        <div class="blog__item_media">
-         <iframe src="https://www.youtube.com/embed/fNRjHW3I63A?si=ZuDMhLxLMfRQ02--" title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </div>
-       </li>
-       <li class="blog__item">
-        <div class="blog__item_content">
-         <h3 class="blog__item_title">Виставка у Франкфурті</h3>
-         <p>Heimtextil 2022</p>
-        </div>
-        <div class="blog__item_media">
-         <img src="images/blog/two.jpg" alt="image">
-        </div>
-       </li>
-       <li class="blog__item">
-        <div class="blog__item_content">
-         <h3 class="blog__item_title">Виставка в МВЦ</h3>
-         <p>“KIFF” 2021</p>
-        </div>
-        <div class="blog__item_media">
-         <img src="images/blog/three.jpg" alt="image">
-        </div>
-       </li>
-       <li class="blog__item">
-        <div class="blog__item_content">
-         <h3 class="blog__item_title">Виставка в МВЦ</h3>
-         <p>«Design living tendency»</p>
-        </div>
-        <div class="blog__item_media">
-         <img src="images/blog/four.jpg" alt="image">
-        </div>
-       </li>
-       <li class="blog__item">
-        <div class="blog__item_content">
-         <h3 class="blog__item_title">Виставка в МВЦ</h3>
-         <p>“KIFF” 2020</p>
-        </div>
-        <div class="blog__item_media">
-         <img src="images/blog/five.jpg" alt="image">
-        </div>
-       </li>
-       <li class="blog__item">
-        <div class="blog__item_content">
-         <h3 class="blog__item_title">Стаття “Розпис стін в сучасному інтерʼєрі”</h3>
-         <p>Журнал “Світ проектів”</p>
-        </div>
-        <div class="blog__item_media">
-         <img src="images/blog/six.jpg" alt="image">
-        </div>
-       </li>
-       <li class="blog__item">
-        <div class="blog__item_content">
-         <h3 class="blog__item_title">Телепередача “Ранок з Україною”</h3>
-         <p>Телеканал Україна</p>
-        </div>
-        <div class="blog__item_media">
-         <img src="images/blog/seven.jpg" alt="image">
-        </div>
-       </li>
-       <li class="blog__item">
-        <div class="blog__item_content">
-         <h3 class="blog__item_title">Телепередача “Роби бізнес”</h3>
-         <p>Телеканал 2+2</p>
-        </div>
-        <div class="blog__item_media">
-         <iframe src="https://www.youtube.com/embed/C4SgXonVrd4?si=Gm7jNUjV-KS0TrmH" title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </div>
-       </li>
-      </ul>
+       </div>
+      </div>
      </div>
     </div>
    </div>
   </section>
+
 
  </main>
 
