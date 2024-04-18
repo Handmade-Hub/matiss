@@ -55,7 +55,6 @@ main {
 }
 
 .container,
-.map__dots,
 .banner__swiper-pagination {
  max-width: 1152px;
  width: 100%;
@@ -2065,7 +2064,6 @@ button {
   justify-content: center;
   align-items: center;
   position: relative;
-  max-width: 960px;
   margin: 0 auto;
 
   @media (max-width: 991px) {
@@ -2091,11 +2089,13 @@ button {
 
  &__dots {
   width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 16px;
   min-height: 74rem;
   position: absolute;
   top: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
 
   @media (max-width: 1199px) {
    min-height: 49.3rem;
