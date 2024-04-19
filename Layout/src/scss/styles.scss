@@ -2092,26 +2092,10 @@ button {
   max-width: 100%;
   margin: 0 auto;
   padding: 0 16px;
-  min-height: 74rem;
+  min-height: 100%;
   position: absolute;
   top: 0;
   left: 0;
-
-  @media (max-width: 1199px) {
-   min-height: 49.3rem;
-  }
-
-  @media (max-width: 991px) {
-   min-height: 36.9rem;
-  }
-
-  @media (max-width: 767px) {
-   min-height: 27.7rem;
-  }
-
-  @media (max-width: 575px) {
-   min-height: 20.17rem;
-  }
  }
 
  &__dot {
@@ -2172,14 +2156,14 @@ button {
 // description
 .description {
  &__wrapper {
-  max-height: 36rem;
+  max-height: var(--min-height);
   overflow: hidden;
   position: relative;
   transition: all 1s;
 
   @media (max-width: 767px) {
    padding: 3.2rem 0;
-   max-height: 38.8rem;
+   max-height: var(--min-height-mob);
   }
 
   &::before {
@@ -2212,6 +2196,9 @@ button {
 
  &__inner {
   padding-bottom: 7rem;
+  br {
+   display: none;
+  }
 
   ul,
   ol {
@@ -6494,10 +6481,14 @@ button {
 
 .modal-order {
  position: fixed;
- top: 0;
+ top: -1000%;
  left: 0;
  z-index: 91;
  width: 100%;
+ transition: all var(--duration-normal);
+ &.open {
+  top: 0;
+ }
  &__wrapper {
   position: relative;
   background-color: var(--color-white);
@@ -6536,6 +6527,9 @@ button {
   gap: 3.2rem;
   display: flex;
   flex-direction: column;
+  &_error {
+   display: none;
+  }
  }
  &__block {
   gap: 2.4rem;
@@ -6558,7 +6552,7 @@ button {
    color: var(--color-red);
   }
   &.error {
-   .contact-form__error {
+   .modal-order__form_error {
     display: block;
    }
   }
@@ -6622,7 +6616,7 @@ button {
  }
  &__buttons {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 3.2rem;
  }
@@ -6631,8 +6625,14 @@ button {
   max-width: 25.6rem;
   width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  gap: 0.4rem;
+  p {
+   text-align: center;
+   font-size: 1.4rem;
+   line-height: 2.1rem;
+   color: var(--color-secondary);
+  }
   label {
    text-align: center;
    font-size: 2rem;
@@ -6657,11 +6657,6 @@ button {
     }
    }
   }
-
-  &_button:focus+label,
-  &_button+label:hover {
-   background-color: red;
-  }
   &_button+label * {
    pointer-events: none;
   }
@@ -6673,8 +6668,47 @@ button {
    position: absolute;
    z-index: -1;
   }
+  &_result {
+   display: none;
+   &.not-empty {
+    display: flex;
+   }
+  }
+  &_list {
+   display: flex;
+   gap: 2.4rem;
+   flex-wrap: wrap;
+   align-items: flex-end;
+   li {
+    display: flex;
+    align-items: center;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    gap: 1.6rem;
+    padding: 0.3rem 0.7rem;
+    border: 0.1rem solid var(--color-primary);
+    width: max-content;
+   }
+  }
+  &_remove {
+   display: flex;
+  }
+  &_remove-all {
+   font-size: 1.6rem;
+   line-height: 2.4rem;
+   position: relative;
+   &::after {
+    content: '';
+    position: absolute;
+    bottom: 0.3rem;
+    left: 0;
+    width: 100%;
+    height: 0.05rem;
+    background-color: var(--color-primary);
+   }
+  }
  }
- &__button {
+ &__submit {
   max-width: 25.6rem;
   &.disabled {
    color: var(--color-gray);
