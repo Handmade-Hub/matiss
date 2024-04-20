@@ -8,12 +8,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
   dropDown.forEach(e => {
    const menu = e.querySelector('.header__drop-down_list');
-   e.addEventListener('mouseover', evt => {
+   e.addEventListener('mouseover', () => {
     e.classList.add('active');
     menu.classList.add('active');
     menu.style.maxHeight = menu.scrollHeight + 'px';
    })
-   e.addEventListener('mouseout', evt => {
+   e.addEventListener('mouseout', () => {
     e.classList.remove('active')
     menu.classList.remove('active')
     menu.style.maxHeight = null;
@@ -27,11 +27,11 @@ document.addEventListener('DOMContentLoaded', function () {
   const menu = document.querySelector('.header-mobile__wrapper');
   const close = document.querySelector('.header-mobile__close');
 
-  button.addEventListener('click', e => {
+  button.addEventListener('click', () => {
    menu.classList.add('menu-open');
    body.classList.add('menu-open');
   })
-  close.addEventListener('click', e => {
+  close.addEventListener('click', () => {
    menu.classList.remove('menu-open');
    body.classList.remove('menu-open');
   })
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
  if (document.querySelectorAll('.header__localization').length) {
   const buttons = document.querySelectorAll('.header__localization_button');
   buttons.forEach(button => {
-   button.addEventListener('click', e => {
+   button.addEventListener('click', () => {
     if (!button.classList.contains('active')) {
      buttons.forEach(item => {
       item.classList.remove('active')
@@ -915,22 +915,6 @@ document.addEventListener('DOMContentLoaded', function () {
   })
  }
 
- // short product title
- if (document.querySelectorAll('.product__title--short').length && screenWidth > 991) {
-  const title = document.querySelector('.product__title--short');
-  const text = title.textContent;
-  const shortText = text.slice(0, 18);
-  if (text.split('').length > 17) {
-   title.innerText = shortText + '...'
-   title.addEventListener('mouseover', function () {
-    title.innerHTML = text;
-   })
-   title.addEventListener('mouseout', function () {
-    title.innerText = shortText + '...'
-   })
-  }
- }
-
  // add to cart modal
  if (document.querySelectorAll('.add-to-cart').length && document.querySelectorAll('.modal-add-to-cart').length) {
   const button = document.querySelector('.add-to-cart');
@@ -938,7 +922,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const buttonClose = document.querySelectorAll('.modal-add-to-cart__button_close');
   const cartIcon = document.querySelectorAll('.header__cart');
   // open modal
-  button.addEventListener('click', e => {
+  button.addEventListener('click', () => {
    if (!button.classList.contains('error')) {
     modal.classList.add('open');
     body.classList.add('menu-open');
@@ -949,7 +933,7 @@ document.addEventListener('DOMContentLoaded', function () {
   })
   // close modal
   buttonClose.forEach(button => {
-   button.addEventListener('click', e => {
+   button.addEventListener('click', () => {
     modal.classList.remove('open');
     body.classList.remove('menu-open');
    })
@@ -962,10 +946,10 @@ document.addEventListener('DOMContentLoaded', function () {
   const form = modal.querySelector('.modal-order__form');
   const input = modal.querySelector('.modal-order__add-file input');
   const buttonOpen = document.querySelector('.product__button--modal-order');
-  const buttonClose = document.querySelector('.modal-order__close');
+  const buttonsClose = document.querySelectorAll('.modal-order__close');
+  const buttonRemoveAll = document.querySelector('.modal-order__add-file_remove-all');
   const result = form.querySelector('.modal-order__add-file_result');
-  const label = modal.querySelector('.modal-order__add-file label');
-  const labelVal = label.innerHTML;
+  const list = form.querySelector('.modal-order__add-file_list');
   let arr = [];
 
   // open and hide modal
@@ -974,9 +958,11 @@ document.addEventListener('DOMContentLoaded', function () {
    body.classList.add('menu-open');
   });
 
-  buttonClose.addEventListener('click', function () {
-   modal.classList.remove('open');
-   body.classList.remove('menu-open');
+  buttonsClose.forEach(buttonClose => {
+   buttonClose.addEventListener('click', function () {
+    modal.classList.remove('open');
+    body.classList.remove('menu-open');
+   })
   })
 
   // submit form
@@ -984,33 +970,73 @@ document.addEventListener('DOMContentLoaded', function () {
    const fields = form.querySelectorAll('.modal-order__field');
    fields.forEach(field => {
     const input = field.querySelector('.modal-order__form_input--required');
-     if (input.value == '') {
-      field.classList.add('error');
-      e.preventDefault();
-     } else {
-      field.classList.remove('error');
-     }
+    if (input.value == '') {
+     field.classList.add('error');
+     e.preventDefault();
+    } else {
+     field.classList.remove('error');
+    }
    })
   })
 
-  // select files
-  input.addEventListener('change', function (e) {
-   for (const file of this.files ) {
-    console.log(file.name)
+  // update items
+  const updateItems = () => {
+   const choosedItems = list.querySelectorAll('li');
+   choosedItems.forEach(choosedItem => {
+    choosedItem.remove();
+   })
+   for (let i = 0; i < arr.length; i++) {
+    result.classList.add('not-empty');
+    let li = document.createElement('li');
+    li.innerHTML = `
+     <span>${arr[i]}</span>
+     <button type="button" class="modal-order__add-file_remove">
+     <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+     <path fill-rule="evenodd" clip-rule="evenodd"
+     d="M13.0667 4.30102C13.1237 4.24408 13.169 4.17647 13.1998 4.10204C13.2307 4.02762 13.2466 3.94784 13.2467 3.86726C13.2467 3.78669 13.2309 3.70689 13.2001 3.63243C13.1693 3.55797 13.1242 3.4903 13.0672 3.43329C13.0103 3.37628 12.9427 3.33104 12.8683 3.30016C12.7938 3.26928 12.7141 3.25336 12.6335 3.25331C12.5529 3.25326 12.4731 3.26908 12.3987 3.29987C12.3242 3.33066 12.2565 3.37581 12.1995 3.43275L8.49924 7.13302L4.80004 3.43275C4.6849 3.31761 4.52874 3.25293 4.36591 3.25293C4.20308 3.25293 4.04692 3.31761 3.93178 3.43275C3.81664 3.54789 3.75195 3.70406 3.75195 3.86689C3.75195 4.02972 3.81664 4.18588 3.93178 4.30102L7.63204 8.00022L3.93178 11.6994C3.87477 11.7564 3.82954 11.8241 3.79869 11.8986C3.76783 11.9731 3.75195 12.0529 3.75195 12.1336C3.75195 12.2142 3.76783 12.294 3.79869 12.3685C3.82954 12.443 3.87477 12.5107 3.93178 12.5677C4.04692 12.6828 4.20308 12.7475 4.36591 12.7475C4.44654 12.7475 4.52637 12.7316 4.60086 12.7008C4.67535 12.6699 4.74303 12.6247 4.80004 12.5677L8.49924 8.86742L12.1995 12.5677C12.3146 12.6827 12.4708 12.7472 12.6335 12.7471C12.7962 12.747 12.9522 12.6823 13.0672 12.5672C13.1822 12.452 13.2468 12.2959 13.2467 12.1332C13.2466 11.9704 13.1818 11.8144 13.0667 11.6994L9.36644 8.00022L13.0667 4.30102Z"
+     fill="black" />
+    </svg>
+    </button>`
+    buttonRemoveAll.insertAdjacentElement('beforeBegin', li);
+    // remove item
+    const buttonRemove = li.querySelector('button');
+    buttonRemove.addEventListener('click', () => {
+     li.remove();
+     arr = arr.filter(function (m) {
+      return m != li.querySelector('span').textContent;
+     })
+     if (arr.length == 0) result.classList.remove('not-empty');
+    })
    }
-   arr.push(this.files);
-   var fileName = '';
-   if (this.files && this.files.length > 1)
-    fileName = (this.getAttribute('data-multiple-caption') || '').replace('{count}', this.files.length);
-   else
-    fileName = e.target.value.split('\\').pop();
+  }
 
-   if (fileName)
-    label.innerHTML = fileName;
-   else
-    label.innerHTML = labelVal;
+  // select files
+  input.addEventListener('change', function () {
+   console.log(arr.length);
+   if (arr.length == 0) {
+    for (const file of this.files) {
+     arr.push(file.name);
+    }
+    updateItems();
+   } else {
+    for (const file of this.files) {
+     if (!arr.includes(file.name)) arr.push(file.name);
+    }
+    updateItems();
+   }
+   // remove all items
+   buttonRemoveAll.addEventListener('click', () => {
+    arr = [];
+    for (const file of this.files) {
+     console.log(fileList);
+    }
+    result.classList.remove('not-empty');
+    const choosedItems = list.querySelectorAll('li');
+    choosedItems.forEach(choosedItem => {
+     choosedItem.remove();
+    });
+   })
   });
-
  }
 });
 
