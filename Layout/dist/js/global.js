@@ -303,12 +303,12 @@ document.addEventListener('DOMContentLoaded', function () {
    const menu = item.querySelector('.filters__item_list');
    if (menu != null && menu != undefined) {
     // filters drop-down
-    item.addEventListener('mouseover', evt => {
+    item.addEventListener('mouseover', () => {
      item.classList.add('active');
      menu.classList.add('active');
      menu.style.maxHeight = menu.scrollHeight + 'px';
     })
-    item.addEventListener('mouseout', evt => {
+    item.addEventListener('mouseout', () => {
      item.classList.remove('active')
      menu.classList.remove('active')
      menu.style.maxHeight = null;
@@ -821,7 +821,7 @@ document.addEventListener('DOMContentLoaded', function () {
    const items = select.querySelectorAll('.product__select_item');
    const multiLists = select.querySelectorAll('.product__select_multi');
    // open - close select
-   panel.addEventListener('click', e => {
+   panel.addEventListener('click', () => {
     if (!panel.classList.contains('active')) {
      panel.classList.add('active');
      list.classList.add('active');
@@ -970,9 +970,9 @@ document.addEventListener('DOMContentLoaded', function () {
    const fields = form.querySelectorAll('.modal-order__field');
    fields.forEach(field => {
     const input = field.querySelector('.modal-order__form_input--required');
-    if (input.value == '') {
-     field.classList.add('error');
+    if (input != null && input.value == '') {
      e.preventDefault();
+     field.classList.add('error');
     } else {
      field.classList.remove('error');
     }
@@ -1012,7 +1012,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // select files
   input.addEventListener('change', function () {
-   console.log(arr.length);
    if (arr.length == 0) {
     for (const file of this.files) {
      arr.push(file.name);
@@ -1027,9 +1026,6 @@ document.addEventListener('DOMContentLoaded', function () {
    // remove all items
    buttonRemoveAll.addEventListener('click', () => {
     arr = [];
-    for (const file of this.files) {
-     console.log(fileList);
-    }
     result.classList.remove('not-empty');
     const choosedItems = list.querySelectorAll('li');
     choosedItems.forEach(choosedItem => {
@@ -1038,6 +1034,173 @@ document.addEventListener('DOMContentLoaded', function () {
    })
   });
  }
+
+ // checkout
+ if (document.querySelectorAll('.checkout').length) {
+  const selects = document.querySelectorAll('.checkout__select');
+  const form = document.getElementById('checkout__form');
+  const requiredFields = document.querySelectorAll('.checkout__block_field.--required');
+  const postDeliveryRadio = document.getElementById('deliveryOne');
+  const certificateButton = document.querySelector('.checkout__certificate_button');
+  const certificateWrap = document.querySelector('.checkout__certificate_wrap');
+  const checkboxes = document.querySelectorAll('.checkout__block_checkboxes input[type=checkbox]');
+  const additionally = document.querySelector('.checkout__order_checkbox');
+
+  // selects
+  selects.forEach(select => {
+   const trigger = select.querySelector('.checkout__select_panel');
+   const list = select.querySelector('.checkout__select_list');
+   const items = select.querySelectorAll('.checkout__select_item');
+   const span = select.querySelector('.checkout__select_panel span');
+
+   // hide selects
+   document.addEventListener('click', e => {
+    if (!select.contains(e.target)) {
+     trigger.classList.remove('active');
+     list.classList.remove('active');
+     list.style.maxHeight = null;
+    }
+   })
+
+   // show and hide select
+   trigger.addEventListener('click', () => {
+    if (!trigger.classList.contains('active')) {
+     trigger.classList.add('active');
+     list.classList.add('active');
+     list.style.maxHeight = list.scrollHeight + 'px';
+    } else {
+     trigger.classList.remove('active');
+     list.classList.remove('active');
+     list.style.maxHeight = null;
+    }
+   })
+
+   // change selects value
+   items.forEach(item => {
+    item.addEventListener('click', () => {
+     if (select.classList.contains('error')) select.classList.remove('error');
+     if (span.classList.contains('--default')) span.classList.remove('--default');
+     span.innerText = item.innerText;
+    })
+   })
+
+
+  })
+
+  // change selects value
+  // items.forEach(item => {
+  //  item.addEventListener('click', function () {
+  //   panel.setAttribute('data-content', item.innerText);
+  //   if (spanValue.classList.contains('--default')) spanValue.classList.remove('--default');
+  //   spanValue.innerText = item.innerText;
+  //   if (select.classList.contains('error')) select.classList.remove('error');
+  //   if (buttonAdd.classList.contains('error')) buttonAdd.classList.remove('error');
+  //   // check on multichoice for item
+  //   if (item.classList.contains('multichoice')) {
+  //    // check on double click for the active element
+  //    if (!panel.classList.contains('multichoice')) {
+  //     panel.classList.add('multichoice');
+  //     panel.setAttribute('data-choised', null);
+  //    }
+  //   } else {
+  //    panel.classList.remove('multichoice');
+  //    panel.removeAttribute('data-choised');
+  //    // clear class choised for item
+  //    multiLists.forEach(multiList => {
+  //     const multiItems = multiList.querySelectorAll('li');
+  //     multiItems.forEach(multiItem => {
+  //      if (multiItem.classList.contains('choised')) multiItem.classList.remove('choised');
+  //     })
+  //    })
+  //   }
+  //   // multichoice
+  //   if (multiLists.length) {
+  //    const itemAttr = item.getAttribute('data-type');
+  //    multiLists.forEach(multiList => {
+  //     const multiItems = multiList.querySelectorAll('li');
+  //     // choise multi item
+  //     multiList.addEventListener('click', e => {
+  //      multiItems.forEach(multiItem => {
+  //       if (e.target == multiItem) {
+  //        multiItem.classList.add('choised');
+  //        panel.setAttribute('data-choised', multiItem.innerText);
+  //        if (select.classList.contains('error')) select.classList.remove('error');
+  //        if (buttonAdd.classList.contains('error')) buttonAdd.classList.remove('error');
+  //       } else {
+  //        if (e.target != e.currentTarget) multiItem.classList.remove('choised');
+  //       }
+  //      })
+  //     })
+  //     // add class choised for multi list
+  //     multiList.classList.remove('choised');
+  //     const multiListAttr = multiList.getAttribute('data-type');
+  //     if (multiListAttr != null && multiListAttr == itemAttr) {
+  //      multiList.classList.add('choised');
+  //     }
+  //    });
+  //   }
+  //  })
+  // })
+
+  // certificate show and hide
+  certificateButton.addEventListener('click', () => {
+   if (!certificateWrap.classList.contains('active')) {
+    certificateButton.classList.add('active');
+    certificateWrap.classList.add('active');
+    certificateWrap.style.maxHeight = certificateWrap.scrollHeight + 'px';
+   } else {
+    certificateButton.classList.remove('active');
+    certificateWrap.classList.remove('active');
+    certificateWrap.style.maxHeight = null;
+   }
+  })
+
+  // checkboxes
+  checkboxes.forEach(checkbox => {
+   checkbox.addEventListener('click', () => {
+    let t = 0;
+    if (checkbox.checked) additionally.classList.add('active');
+    for (let i = 0; i < checkboxes.length; i++) {
+     if (checkboxes[i].checked) t = 1;
+    }
+    if (t == 0) additionally.classList.remove('active');
+   })
+  })
+
+  // submit form
+  form.addEventListener('submit', e => {
+   // checking required fields
+   requiredFields.forEach(field => {
+    const input = field.querySelector('input');
+    if (input.value == '') {
+     field.classList.add('error');
+     e.preventDefault();
+    } else {
+     field.classList.remove('error');
+    }
+   })
+   // checking delivery field
+   if (postDeliveryRadio.checked) {
+    selects.forEach(select => {
+     if (select.classList.contains('--required')) {
+      const span = select.querySelector('.checkout__select_panel span');
+      if (span.classList.contains('--default')) {
+       e.preventDefault();
+       select.classList.add('error');
+      } else {
+       select.classList.remove('error');
+      }
+     }
+
+    })
+   }
+  })
+
+
+
+
+ }
+
 });
 
 const descriptionAccordion = (initialHeight, mobileHeight) => {
