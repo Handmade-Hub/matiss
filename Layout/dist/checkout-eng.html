@@ -37,7 +37,7 @@
       <nav class="header__menu tablet-none">
        <ul class="header__list">
         <li class="header__list_item header__drop-down">
-         <div class="header__list_link fw-600 with-arrow">Каталог
+         <div class="header__list_link fw-600 with-arrow">Catalog
           <img src="images/icons/header-drop-icon.svg" alt="arrow">
          </div>
          <ul class="header__drop-down_list">
@@ -56,7 +56,7 @@
          </ul>
         </li>
         <li class="header__list_item header__drop-down">
-         <div class="header__list_link fw-600 with-arrow">Інформація
+         <div class="header__list_link fw-600 with-arrow">Information
           <img src="images/icons/header-drop-icon.svg" alt="arrow">
          </div>
          <ul class="header__drop-down_list">
@@ -78,10 +78,10 @@
          </ul>
         </li>
         <li class="header__list_item">
-         <a href="#" class="header__list_link fw-600">Блог</a>
+         <a href="#" class="header__list_link fw-600">Blog</a>
         </li>
         <li class="header__list_item">
-         <a href="#" class="header__list_link fw-600">Контакти</a>
+         <a href="#" class="header__list_link fw-600">Contacts</a>
         </li>
        </ul>
       </nav>
@@ -389,7 +389,7 @@
          <path d="M16 20L8.5 12.5L16 5" stroke="#9A9A9A" stroke-width="1.5" stroke-linecap="round"
           stroke-linejoin="round" />
         </svg>
-        <a href="#" class="breadcrumbs__item_link fw-500">Продовжити покупки</a>
+        <a href="#" class="breadcrumbs__item_link fw-500">To shopping</a>
        </li>
       </ul>
      </nav>
@@ -402,24 +402,24 @@
    <div class="checkout__wrapper">
     <div class="container">
      <div class="checkout__inner">
-      <h2 class="checkout__title text-center">Оформити замовлення</h2>
+      <h2 class="checkout__title text-center">Checkout</h2>
       <form id="checkout__form" class="checkout__form">
        <div class="checkout__content">
         <div class="checkout__case">
          <div class="checkout__block bg-gray">
           <p class="checkout__block_number">1</p>
-          <h3 class="checkout__block_title">Контактна інформація</h3>
+          <h3 class="checkout__block_title">Contact Information</h3>
           <div class="checkout__block_case">
            <div class="checkout__block_wrap">
             <div class="checkout__block_field --required">
              <input type="text" name="name" placeholder="Імʼя*" id="name">
-             <label for="name">Імʼя*</label>
-             <p class="checkout__block_error">Будь-ласка, введіть імʼя</p>
+             <label for="name">Name*</label>
+             <p class="checkout__block_error">Please, enter the name</p>
             </div>
             <div class="checkout__block_field --required">
              <input type="text" name="name" placeholder="Телефон*" id="phone">
-             <label for="phone">Телефон*</label>
-             <p class="checkout__block_error">Будь-ласка, введіть номер</p>
+             <label for="phone">Phone*</label>
+             <p class="checkout__block_error">Please, enter the phone number</p>
             </div>
            </div>
            <div class="checkout__block_field">
@@ -428,187 +428,93 @@
            </div>
            <div class="checkout__block_field">
             <textarea placeholder="Повідомлення" name="message" id="message"></textarea>
-            <label for="message">Повідомлення</label>
+            <label for="message">Message</label>
            </div>
            <div class="checkout__block_checkboxes">
-            <p>Оберіть додаткові поcлуги</p>
+            <p>Choose additional services</p>
             <div class="checkout__block_checkbox">
              <input id="checkboxOne" type="checkbox"
               value="Продовження сюжету на торці + 5% (стандартно торці забарвлені в один колір)">
              <label for="checkboxOne">
-              <span>Продовження сюжету на торці + 5%</span>
-              <span>(стандартно торці забарвлені в один колір)</span>
+              <span>Continuation of the plot on the end + 5%</span>
+              <span>(by default, the ends are painted in the same color)</span>
              </label>
             </div>
             <div class="checkout__block_checkbox">
              <input id="checkboxTwo" type="checkbox"
               value="Зміна кольору/композиції + 10 % (попередньо виконується ескіз)">
              <label for="checkboxTwo">
-              <span>Зміна кольору/композиції + 10 %</span>
-              <span>(попередньо виконується ескіз)</span>
+              <span>Color/composition change + 10%</span>
+              <span>(preliminary sketch)</span>
              </label>
             </div>
             <div class="checkout__block_checkbox">
              <input id="checkboxThree" type="checkbox" value="Високий підрамник + 15%">
-             <label for="checkboxThree">Високий підрамник + 15%</label>
+             <label for="checkboxThree">High stretcher + 15%</label>
             </div>
             <div class="checkout__block_checkbox">
              <input id="checkboxFour" type="checkbox" value="Подарункова упаковка + 5%">
-             <label for="checkboxFour">Подарункова упаковка + 5%</label>
+             <label for="checkboxFour">Gift wrapping + 5%</label>
             </div>
             <div class="checkout__block_checkbox">
              <input id="checkboxFive" type="checkbox" value="Підпис автора + 0%">
-             <label for="checkboxFive">Підпис автора + 0%</label>
+             <label for="checkboxFive">Author's signature + 0%</label>
             </div>
            </div>
           </div>
          </div>
+
+
+
          <div class="checkout__block bg-gray">
           <p class="checkout__block_number">2</p>
-          <h3 class="checkout__block_title">Доставка</h3>
+          <h3 class="checkout__block_title">Delivery</h3>
           <div class="checkout__block_case">
-           <div class="checkout__select checkout__select--city">
-            <p class="checkout__select_title">Місто</p>
-            <div class="checkout__select_panel" data-content="Київ">
-             <span>Київ</span>
-             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M20 8L12.5 15.5L5 8" stroke="black" stroke-width="1.8" stroke-linecap="round"
-               stroke-linejoin="round" />
-             </svg>
-            </div>
-            <ul class="checkout__select_list">
-             <li class="checkout__select_item">
-              <p>Київ</p>
-             </li>
-             <li class="checkout__select_item">
-              <p>Львів</p>
-             </li>
-             <li class="checkout__select_item">
-              <p>Одеса</p>
-             </li>
-             <li class="checkout__select_item">
-              <p>Полтава</p>
-             </li>
-            </ul>
-           </div>
            <div class="checkout__delivery">
             <ul class="checkout__delivery_list">
-             <li class="checkout__delivery_item">
+             <li class="checkout__delivery_item rolled-delivery">
               <div class="checkout__delivery_case">
                <div class="checkout__delivery_radio">
-                <input id="deliveryOne" type="radio" name="delivery" checked value="Нова Пошта">
-                <label for="deliveryOne">Нова Пошта</label>
+                <input id="deliveryRolled" type="radio" name="delivery" checked value="Rolled in a tube (+50 $ / pc)">
+                <label for="deliveryRolled">Rolled in a tube (+50 $ / pc)</label>
                </div>
-               <p>За тарифами перевізника</p>
               </div>
-              <div class="checkout__delivery_selects delivery-method">
-               <div class="checkout__select">
-                <p class="checkout__select_title">Спосіб доставки</p>
-                <div class="checkout__select_panel delivery-method-value" data-content="Відділення">
-                 <span>Відділення</span>
-                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M20 8L12.5 15.5L5 8" stroke="black" stroke-width="1.8" stroke-linecap="round"
-                   stroke-linejoin="round" />
-                 </svg>
+              <div class="checkout__rolled-delivery">
+               <div class="checkout__rolled-delivery_case">
+                <div class="checkout__rolled-delivery_field --required">
+                 <input id="country" type="text" placeholder="Country*">
+                 <label for="country">Country*</label>
+                 <p class="checkout__rolled-delivery_error">Please, enter the country</p>
                 </div>
-                <ul class="checkout__select_list">
-                 <li class="checkout__select_item">
-                  <p>Відділення</p>
-                 </li>
-                 <li class="checkout__select_item">
-                  <p>Адресна доставка</p>
-                 </li>
-                </ul>
-                <p class="checkout__select_subtext">*Якщо ваш товар перевищує розмір 70х110 см, будь ласка, оберіть
-                 вантажне відділення</p>
-               </div>
-               <div class="checkout__select delivery-department --required">
-                <div class="checkout__select_panel" data-content="Оберіть відділення">
-                 <span class="--default">Оберіть відділення</span>
-                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M20 8L12.5 15.5L5 8" stroke="black" stroke-width="1.8" stroke-linecap="round"
-                   stroke-linejoin="round" />
-                 </svg>
-                </div>
-                <ul class="checkout__select_list">
-                 <li class="checkout__select_item">
-                  <p>Відділення №1: вул. Пирогівський шлях, 135</p>
-                 </li>
-                 <li class="checkout__select_item">
-                  <p>Одеса</p>
-                 </li>
-                 <li class="checkout__select_item">
-                  <p>Полтава</p>
-                 </li>
-                </ul>
-                <p class="checkout__select_error">Будь-ласка, оберіть відділення</p>
-               </div>
-               <div class="checkout__address-delivery">
-               <div class="checkout__address-delivery_field --required">
-                <input id="street" type="text" placeholder="Вулиця*">
-                <label for="street">Вулиця*</label>
-                <p class="checkout__address-delivery_error">Будь-ласка, введіть назву вулиці</p>
-               </div>
-               <div class="checkout__address-delivery_case">
-                <div class="checkout__address-delivery_field --required">
-                 <input id="home" type="text" placeholder="Будинок*">
-                 <label for="home">Будинок*</label>
-                 <p class="checkout__address-delivery_error">Будь-ласка, введіть номер будинку</p>
-                </div>
-                <div class="checkout__address-delivery_field">
-                 <input id="apartmnet" type="text" placeholder="Квартира">
-                 <label for="apartmnet">Квартира</label>
+                <div class="checkout__rolled-delivery_field">
+                 <input id="state" type="text" placeholder="Region/State">
+                 <label for="state">Region/State</label>
                 </div>
                </div>
+               <div class="checkout__rolled-delivery_case">
+                <div class="checkout__rolled-delivery_field --required">
+                 <input id="city" type="text" placeholder="City*">
+                 <label for="city">City*</label>
+                 <p class="checkout__rolled-delivery_error">Please, enter the city</p>
+                </div>
+                <div class="checkout__rolled-delivery_field --required">
+                 <input id="index" type="text" placeholder="Index*">
+                 <label for="index">Index*</label>
+                 <p class="checkout__rolled-delivery_error">Please, enter the index</p>
+                </div>
+               </div>
+               <div class="checkout__rolled-delivery_field --required">
+                <input id="address" type="text" placeholder="Adress*">
+                <label for="address">Adress*</label>
+                <p class="checkout__rolled-delivery_error">Please, enter the adress</p>
                </div>
               </div>
              </li>
-             <li class="checkout__delivery_item checkout__delivery_item--city">
+             <li class="checkout__delivery_item checkout__delivery_item--canvas">
               <div class="checkout__delivery_case">
                <div class="checkout__delivery_radio">
-                <input id="deliveryTwo" type="radio" name="delivery" value="Самовивіз">
-                <label for="deliveryTwo">Самовивіз</label>
-               </div>
-               <p class="green">Безкоштовно</p>
-              </div>
-              <div class="checkout__delivery_selects">
-               <div class="checkout__select">
-                <div class="checkout__select_panel" data-content="Майстерня, Київ, вул. Генерала Шаповала, 2, офіс 555">
-                 <span>Майстерня, Київ, вул. Генерала Шаповала, 2, офіс 555</span>
-                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M20 8L12.5 15.5L5 8" stroke="black" stroke-width="1.8" stroke-linecap="round"
-                   stroke-linejoin="round" />
-                 </svg>
-                </div>
-                <ul class="checkout__select_list">
-                 <li class="checkout__select_item">
-                  <p>Майстерня, Київ, вул. Генерала Шаповала, 2, офіс 555</p>
-                 </li>
-                 <li class="checkout__select_item">
-                  <p>Майстерня, Київ</p>
-                 </li>
-                 <li class="checkout__select_item">
-                  <p>Одеса</p>
-                 </li>
-                 <li class="checkout__select_item">
-                  <p>Полтава</p>
-                 </li>
-                 <li class="checkout__select_item">
-                  <p>Полтава</p>
-                 </li>
-                 <li class="checkout__select_item">
-                  <p>Полтава</p>
-                 </li>
-                 <li class="checkout__select_item">
-                  <p>Полтава</p>
-                 </li>
-                </ul>
-                <div class="checkout__select_pack">
-                 <p class="checkout__select_work">Пн - Пт : 10:00-19:00</p>
-                 <div class="checkout__select_image">
-                  <img src="checkout-map.png" alt="map">
-                 </div>
-                </div>
+                <input id="deliveryCanvas" type="radio" name="delivery" value="Stretched canvas (+100 $ / pc)">
+                <label for="deliveryCanvas">Stretched canvas (+100 $ / pc)</label>
                </div>
               </div>
              </li>
@@ -616,22 +522,19 @@
            </div>
           </div>
          </div>
+
          <div class="checkout__block bg-gray">
           <p class="checkout__block_number">3</p>
-          <h3 class="checkout__block_title">Оплата</h3>
+          <h3 class="checkout__block_title">Payment</h3>
           <div class="checkout__block_case">
            <div class="checkout__block_radios">
             <div class="checkout__block_radio">
-             <input type="radio" name="pay" id="radioOne" value="Оплата онлайн" checked>
-             <label for="radioOne">Оплата онлайн</label>
+             <input type="radio" name="pay" id="radioOne" value="PayPal" checked>
+             <label for="radioOne">PayPal</label>
             </div>
             <div class="checkout__block_radio">
-             <input type="radio" name="pay" id="radioTwo" value="Оплата онлайн">
-             <label for="radioTwo">Оплата готівкою</label>
-            </div>
-            <div class="checkout__block_radio">
-             <input type="radio" name="pay" id="radioThree" value="Оплата онлайн">
-             <label for="radioThree">Накладений платіж (оплата при отриманні)</label>
+             <input type="radio" name="pay" id="radioTwo" value="Payment by card">
+             <label for="radioTwo">Payment by card</label>
             </div>
            </div>
           </div>
@@ -640,7 +543,7 @@
         <div class="checkout__wrap">
          <div class="checkout__certificate">
           <button type="button" class="checkout__certificate_button">
-           <span>Сертифікат</span>
+           <span>Certificate</span>
            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M26.6665 10.666L16.6665 20.666L6.6665 10.666" stroke="black" stroke-width="2"
              stroke-linecap="round" stroke-linejoin="round" />
@@ -649,30 +552,30 @@
           <div class="checkout__certificate_wrap">
            <div class="checkout__certificate_case">
             <div class="checkout__certificate_field">
-             <input id="certificate" type="number" placeholder="Вкажіть вартість">
-             <label for="certificate">Вкажіть вартість</label>
+             <input id="certificate" type="text" placeholder="Enter the cost">
+             <label for="certificate">Enter the cost</label>
             </div>
-            <button type="button" class="checkout__certificate_submit button__primary">Застосувати</button>
+            <button type="button" class="checkout__certificate_submit button__primary">Apply</button>
            </div>
           </div>
          </div>
          <div class="checkout__order">
           <div class="checkout__order_case">
-           <h5 class="checkout__order_title">Ваше замовлення</h5>
-           <a href="#" class="checkout__order_link">Редагувати</a>
+           <h5 class="checkout__order_title">Your order</h5>
+           <a href="#" class="checkout__order_link">Edit</a>
           </div>
           <ul class="checkout__order_list">
            <li class="checkout__order_item">
             <div class="checkout__order_image">
-             <img src="images/product-card/product-two.jpg" alt="product">
+             <img src="images/product-card/product-four.jpg" alt="product">
             </div>
             <div class="checkout__order_info">
-             <h3 class="checkout__order_heading">Impression</h3>
-             <p>Розмір: <span>80х120 см</span></p>
-             <p>Рама: <span>біла деревʼяна</span></p>
-             <p class="checkout__order_quantity">Кількість: <span>1</span></p>
+             <h3 class="checkout__order_heading">Rime</h3>
+             <p>Size: <span>80x120 cm</span></p>
+             <p>Frame: <span>without frame</span></p>
+             <p class="checkout__order_quantity">Quantity: <span>1</span></p>
             </div>
-            <p class="checkout__order_price">$195</p>
+            <p class="checkout__order_price">$300</p>
             <butto type="button" class="checkout__order_remove">
              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M4 12L12 4M4 4L12 12" stroke="black" stroke-width="1.2" stroke-linecap="round"
@@ -682,13 +585,13 @@
            </li>
            <li class="checkout__order_item">
             <div class="checkout__order_image">
-             <img src="images/product-card/product-four.jpg" alt="product">
+             <img src="images/product-card/product-five.jpg" alt="product">
             </div>
             <div class="checkout__order_info">
-             <h3 class="checkout__order_heading">Rime</h3>
-             <p>Розмір: <span>80х120 см</span></p>
-             <p>Рама: <span>без рами</span></p>
-             <p class="checkout__order_quantity">Кількість: <span>1</span></p>
+             <h3 class="checkout__order_heading">Rime 2</h3>
+             <p>Size: <span>80x120 cm</span></p>
+             <p>Frame: <span>without frame</span></p>
+             <p class="checkout__order_quantity">Quantity: <span>1</span></p>
             </div>
             <p class="checkout__order_price">$300</p>
             <button type="button" class="checkout__order_remove">
@@ -700,15 +603,15 @@
            </li>
            <li class="checkout__order_item">
             <div class="checkout__order_image">
-             <img src="images/product-card/product-five.jpg" alt="product">
+             <img src="images/product-card/product-two.jpg" alt="product">
             </div>
             <div class="checkout__order_info">
-             <h3 class="checkout__order_heading">Rime 2</h3>
-             <p>Розмір: <span>80х120 см</span></p>
-             <p>Рама: <span>без рами</span></p>
-             <p class="checkout__order_quantity">Кількість: <span>1</span></p>
+             <h3 class="checkout__order_heading">Impression 2</h3>
+             <p>Size: <span>80x120 cm</span></p>
+             <p>Frame: <span>without frame</span></p>
+             <p class="checkout__order_quantity">Quantity: <span>1</span></p>
             </div>
-            <p class="checkout__order_price">$300</p>
+            <p class="checkout__order_price">$195</p>
             <button type="button" class="checkout__order_remove">
              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M4 12L12 4M4 4L12 12" stroke="black" stroke-width="1.2" stroke-linecap="round"
@@ -719,13 +622,14 @@
           </ul>
           <div class="checkout__order_footer">
            <div class="checkout__order_pack">
-            <p>Сума <span>$795</span></p>
-            <p class="checkout__order_checkbox">Додатково <span>$40</span></p>
-            <p>Знижка <span class="checkout__order_discount red">$0</span></p>
+            <p>Almount <span>$795</span></p>
+            <p class="checkout__order_checkbox">Additionally <span>$40</span></p>
+            <p>Delivery <span>$150</span></p>
+            <p>Discount <span class="checkout__order_discount red">$0</span></p>
            </div>
-           <p class="checkout__order_total">Всього <span>$795</span></p>
-           <input type="submit" class="checkout__order_button button__primary" value="підтвердити замовлення">
-           <p class="checkout__order_subtext text-center">Я згоден на обробку персональних даних</p>
+           <p class="checkout__order_total">Total <span>$945</span></p>
+           <input type="submit" class="checkout__order_button button__primary" value="confirm order">
+           <p class="checkout__order_subtext text-center">I agree to the processing of personal data</p>
           </div>
          </div>
         </div>

@@ -1045,6 +1045,29 @@ document.addEventListener('DOMContentLoaded', function () {
   const certificateWrap = document.querySelector('.checkout__certificate_wrap');
   const checkboxes = document.querySelectorAll('.checkout__block_checkboxes input[type=checkbox]');
   const additionally = document.querySelector('.checkout__order_checkbox');
+  const radioItems = document.querySelectorAll('.checkout__delivery_item');
+  const citySelect = document.querySelector('.checkout__select--city');
+  const cityRadio = document.querySelector('.checkout__delivery_item--city');
+  const certificateInput = document.querySelector('.checkout__certificate_field input');
+  const certificateSubmit = document.querySelector('.checkout__certificate_submit');
+  const certificateField = document.querySelector('.checkout__order_discount');
+  const deliveryMethod = document.querySelector('.delivery-method');
+  const rolledDelivery = document.querySelector('.checkout__rolled-delivery');
+  const rolledDeliveryRadio = document.getElementById('deliveryRolled');
+
+  // add sertificate
+  certificateSubmit.addEventListener('click', () => {
+   if (certificateInput.value != '') certificateField.textContent = `$${certificateInput.value}`;
+  })
+  
+  // delivery method on the loading page
+  if (deliveryMethod != null) {
+   const deliveryMethodValue = document.querySelector('.delivery-method-value span');
+   if (deliveryMethodValue.textContent  == 'Відділення') deliveryMethod.classList.add('department');
+   else deliveryMethod.classList.remove('department');
+   if (deliveryMethodValue.textContent  == 'Адресна доставка') deliveryMethod.classList.add('address');
+   else deliveryMethod.classList.remove('address');
+  }
 
   // selects
   selects.forEach(select => {
@@ -1081,66 +1104,37 @@ document.addEventListener('DOMContentLoaded', function () {
      if (select.classList.contains('error')) select.classList.remove('error');
      if (span.classList.contains('--default')) span.classList.remove('--default');
      span.innerText = item.innerText;
+     // city select
+     if (citySelect != null && cityRadio != null) {
+      const panelText = citySelect.querySelector('.checkout__select_panel span').textContent
+      if (panelText == 'Київ' || panelText == 'Львів') cityRadio.classList.remove('disabled');
+      else cityRadio.classList.add('disabled')
+     }
+     if (deliveryMethod != null) {
+      const deliveryMethodValue = document.querySelector('.delivery-method-value span');
+      if (deliveryMethodValue.textContent  == 'Відділення') deliveryMethod.classList.add('department');
+      else deliveryMethod.classList.remove('department');
+      if (deliveryMethodValue.textContent  == 'Адресна доставка') deliveryMethod.classList.add('address');
+      else deliveryMethod.classList.remove('address');
+     }
     })
    })
-
-
   })
 
-  // change selects value
-  // items.forEach(item => {
-  //  item.addEventListener('click', function () {
-  //   panel.setAttribute('data-content', item.innerText);
-  //   if (spanValue.classList.contains('--default')) spanValue.classList.remove('--default');
-  //   spanValue.innerText = item.innerText;
-  //   if (select.classList.contains('error')) select.classList.remove('error');
-  //   if (buttonAdd.classList.contains('error')) buttonAdd.classList.remove('error');
-  //   // check on multichoice for item
-  //   if (item.classList.contains('multichoice')) {
-  //    // check on double click for the active element
-  //    if (!panel.classList.contains('multichoice')) {
-  //     panel.classList.add('multichoice');
-  //     panel.setAttribute('data-choised', null);
-  //    }
-  //   } else {
-  //    panel.classList.remove('multichoice');
-  //    panel.removeAttribute('data-choised');
-  //    // clear class choised for item
-  //    multiLists.forEach(multiList => {
-  //     const multiItems = multiList.querySelectorAll('li');
-  //     multiItems.forEach(multiItem => {
-  //      if (multiItem.classList.contains('choised')) multiItem.classList.remove('choised');
-  //     })
-  //    })
-  //   }
-  //   // multichoice
-  //   if (multiLists.length) {
-  //    const itemAttr = item.getAttribute('data-type');
-  //    multiLists.forEach(multiList => {
-  //     const multiItems = multiList.querySelectorAll('li');
-  //     // choise multi item
-  //     multiList.addEventListener('click', e => {
-  //      multiItems.forEach(multiItem => {
-  //       if (e.target == multiItem) {
-  //        multiItem.classList.add('choised');
-  //        panel.setAttribute('data-choised', multiItem.innerText);
-  //        if (select.classList.contains('error')) select.classList.remove('error');
-  //        if (buttonAdd.classList.contains('error')) buttonAdd.classList.remove('error');
-  //       } else {
-  //        if (e.target != e.currentTarget) multiItem.classList.remove('choised');
-  //       }
-  //      })
-  //     })
-  //     // add class choised for multi list
-  //     multiList.classList.remove('choised');
-  //     const multiListAttr = multiList.getAttribute('data-type');
-  //     if (multiListAttr != null && multiListAttr == itemAttr) {
-  //      multiList.classList.add('choised');
-  //     }
-  //    });
-  //   }
-  //  })
-  // })
+  // radio show and hide
+  radioItems.forEach(radioItem => {
+   // add class checked on the loading page
+   radioInput = radioItem.querySelector('input[type=radio]');
+   if (radioInput.checked) radioItem.classList.add('checked');
+   // change checked input
+   radioInput.addEventListener('change', () => {
+    for (let i = 0; i < radioItems.length; i++) {
+     const input = radioItems[i].querySelector('input[type=radio]');
+     radioItems[i].classList.remove('checked');
+     if (input.checked) radioItems[i].classList.add('checked');
+    }
+   })
+  })
 
   // certificate show and hide
   certificateButton.addEventListener('click', () => {
@@ -1180,19 +1174,50 @@ document.addEventListener('DOMContentLoaded', function () {
     }
    })
    // checking delivery field
-   if (postDeliveryRadio.checked) {
-    selects.forEach(select => {
-     if (select.classList.contains('--required')) {
-      const span = select.querySelector('.checkout__select_panel span');
-      if (span.classList.contains('--default')) {
-       e.preventDefault();
-       select.classList.add('error');
-      } else {
-       select.classList.remove('error');
+   if (postDeliveryRadio != null && postDeliveryRadio.checked) {
+    if (deliveryMethod != null) {
+     if (deliveryMethod.classList.contains('department')) {
+      selects.forEach(select => {
+       if (select.classList.contains('--required')) {
+        const span = select.querySelector('.checkout__select_panel span');
+        if (span.classList.contains('--default')) {
+         e.preventDefault();
+         select.classList.add('error');
+        } else {
+         select.classList.remove('error');
+        }
+       }
+      })
+     }
+     if (deliveryMethod.classList.contains('address')) {
+      const fields = document.querySelectorAll('.checkout__address-delivery_field.--required');
+      if (fields.length) {
+       fields.forEach(field => {
+        const input = field.querySelector('input');
+        if (input.value == '') {
+         field.classList.add('error');
+         e.preventDefault();
+        } else {
+         field.classList.remove('error');
+        }
+       })
       }
      }
-
-    })
+    }
+   }
+   if (rolledDelivery != null && rolledDeliveryRadio.checked) {
+    const fields = document.querySelectorAll('.checkout__rolled-delivery_field.--required');
+    if (fields.length) {
+     fields.forEach(field => {
+      const input = field.querySelector('input');
+      if (input.value == '') {
+       field.classList.add('error');
+       e.preventDefault();
+      } else {
+       field.classList.remove('error');
+      }
+     })
+    }
    }
   })
 

@@ -5069,23 +5069,13 @@ button {
    line-height: 3.6rem;
   }
   &--short {
-   @media (min-width: 1200px) {
-    position: relative;
-    max-width: 43.7rem;
-    max-height: 4.8rem;
-    overflow: hidden;
-    &::after {
-     content: '...';
-     position: absolute;
-     top: 0;
-     right: 3.5rem;
-    }
-    &:hover {
-     max-height: 100%;
-     &::after {
-      display: none;
-     }
-    }
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   transition: all var(--duration-normal);
+   &:hover {
+    white-space: normal;
+    overflow: visible;
    }
   }
  }
@@ -6410,6 +6400,9 @@ button {
   @media (max-width: 991px) {
    max-width: 100%;
   }
+  @media (max-width: 767px) {
+   gap: 3.2rem;
+  }
  }
  &__wrap {
   display: flex;
@@ -6419,6 +6412,9 @@ button {
   width: 100%;
   @media (max-width: 991px) {
    max-width: 100%;
+  }
+  @media (max-width: 767px) {
+   gap: 3.2rem;
   }
  }
 
@@ -6504,7 +6500,7 @@ button {
     max-width: 100%;
     width: 100%;
     border: 0.1rem solid var(--color-tertiary);
-    padding: 1.2rem;
+    padding: 1.1rem 1.2rem;
     background-color: var(--color-gray-l);
 
     &::placeholder {
@@ -6618,6 +6614,10 @@ button {
     cursor: pointer;
     color: var(--color-gray);
     transition: all var(--duration-normal);
+    @media (min-width: 575px) {
+     display: flex;
+     flex-direction: column;
+    }
    }
    &+& {
     margin-top: 0.8rem;
@@ -6628,11 +6628,17 @@ button {
    flex-direction: column;
    gap: 2.4rem;
    max-width: 41.6rem;
+   @media (max-width: 767px) {
+    gap: 2rem;
+   }
   }
   &_radio {
    display: flex;
    align-items: center;
    gap: 1.2rem;
+   @media (max-width: 767px) {
+    gap: 1rem;
+   }
    input {
     cursor: pointer;
     flex-shrink: 0;
@@ -6670,6 +6676,11 @@ button {
     font-size: 1.8rem;
     line-height: 2.6rem;
     font-weight: 500;
+    @media (max-width: 767px) {
+     font-size: 1.6rem;
+     line-height: 2.4rem;
+     font-weight: 600;
+    }
    }
   }
  }
@@ -6685,18 +6696,28 @@ button {
    align-items: center;
    padding: 2.4rem 2.4rem 4rem 2.4rem;
    gap: 3rem;
+   @media (max-width: 767px) {
+    padding: 2.4rem 1.6rem;
+   }
   }
   &_list {
    display: flex;
    flex-direction: column;
    gap: 4rem;
    padding: 0 2.4rem;
+   @media (max-width: 767px) {
+    gap: 2.4rem;
+    padding: 0 1.6rem 2.4rem;
+   }
   }
   &_item {
    display: flex;
    border-bottom: 0.1rem solid var(--color-gray-ml);
    position: relative;
    padding-bottom: 4rem;
+   @media (max-width: 767px) {
+    padding: 1.6rem 0 1.6rem 1.6rem;
+   }
    &:last-of-type {
     border-bottom: none;
    }
@@ -6715,8 +6736,8 @@ button {
     object-fit: cover;
 
     @media (max-width: 767px) {
-     width: 11.6rem;
-     height: 11.6rem;
+     width: 10rem;
+     height: 10rem;
     }
    }
   }
@@ -6725,16 +6746,17 @@ button {
    line-height: 2.6rem;
    font-weight: 600;
    font-family: "Open Sans", sans-serif;
+   @media (max-width: 767px) {
+    font-size: 1.4rem;
+    line-height: 2.1rem;
+    margin-bottom: 0.2rem;
+   }
   }
   &_info {
    display: flex;
    flex-direction: column;
    gap: 0.2rem;
    width: 100%;
-
-   @media (max-width: 767px) {
-    gap: 0.2rem;
-   }
 
    p {
     font-size: 1.4rem;
@@ -6753,17 +6775,20 @@ button {
    line-height: 3.6rem;
    font-weight: 600;
    font-family: "Open Sans", sans-serif;
-
    @media (max-width: 767px) {
-    font-size: 1.8rem;
-    line-height: 2.6rem;
-    margin-bottom: 0.2rem;
+    font-size: 2rem;
+    line-height: 3rem;
+    font-weight: 500;
    }
   }
   &_link {
    font-size: 1.6rem;
    line-height: 2.4rem;
    position: relative;
+   @media (max-width: 767px) {
+    font-size: 1.4rem;
+    line-height: 2.1rem;
+   }
    &::after {
     content: '';
     position: absolute;
@@ -6793,7 +6818,6 @@ button {
    padding-top: 2rem;
 
    @media (max-width: 767px) {
-
     font-weight: 600;
    }
   }
@@ -6803,6 +6827,9 @@ button {
    position: absolute;
    top: 0;
    right: 0;
+   @media (max-width: 767px) {
+    top: 1.6rem;
+   }
 
    svg {
     width: 1.6rem;
@@ -6812,12 +6839,19 @@ button {
   &_footer {
    border-top: 0.1rem solid var(--color-gray);
    padding: 2.4rem;
+   @media (max-width: 767px) {
+    padding: 2.4rem 1.6rem;
+   }
   }
   &_pack {
    display: flex;
    flex-direction: column;
    gap: 0.6rem;
    margin-bottom: 2.4rem;
+   @media (max-width: 767px) {
+    gap: 0.8rem;
+    margin-bottom: 1.6rem;
+   }
    p {
     display: flex;
     justify-content: space-between;
@@ -6839,10 +6873,18 @@ button {
    justify-content: space-between;
    gap: 3rem;
    margin-bottom: 2.4rem;
+   @media (max-width: 767px) {
+    font-size: 1.8rem;
+    line-height: 2.6rem;
+   }
   }
   &_button {
    max-width: 100%;
    margin-bottom: 1.6rem;
+   @media (max-width: 767px) {
+    margin-bottom: 0.8rem;
+    min-height: 4.8rem;
+   }
   }
   &_subtext {
    font-size: 1.2rem;
@@ -6852,6 +6894,9 @@ button {
  &__certificate {
   padding: 2.3rem 2.4rem;
   border: 0.1rem solid var(--color-gray);
+  @media (max-width: 767px) {
+   padding: 1.5rem 1.6rem;
+  }
   &_button {
    display: flex;
    justify-content: space-between;
@@ -6860,6 +6905,21 @@ button {
    line-height: 3.6rem;
    font-weight: 600;
    width: 100%;
+   @media (max-width: 767px) {
+    font-size: 2rem;
+    line-height: 3rem;
+    font-weight: 500;
+   }
+   &.active {
+    svg {
+     transform: rotate(180deg);
+    }
+   }
+   svg {
+    width: 2.4rem;
+    height: 2.4rem;
+    transition: all var(--duration-normal);
+   }
   }
   &_wrap {
    overflow: hidden;
@@ -6867,6 +6927,9 @@ button {
    transition: all var(--duration-normal);
    &.active {
     margin-top: 2.4rem;
+    @media (max-width: 767px) {
+     margin-top: 1.6rem;
+    }
    }
   }
   &_case {
@@ -6889,6 +6952,12 @@ button {
     height: 4.8rem;
     padding: 1.1rem 1.2rem;
     border: 0.1rem solid var(--color-gray);
+    @media (max-width: 991px) {
+     max-width: 100%;
+    }
+    @media (max-width: 767px) {
+     height: 4.5rem;
+    }
     &::placeholder {
      opacity: 0;
     }
@@ -6912,9 +6981,7 @@ button {
    input:not(:placeholder-shown)~label,
    input:focus~label,
    input:focus-visible~label {
-    transform: translateY(-50%);
-    top: 0;
-    padding: 0 0.5rem;
+    opacity: 0;
     font-size: 1rem;
     color: var(--color-secondary);
    }
@@ -6928,6 +6995,10 @@ button {
    line-height: 2.4rem;
    font-weight: 400;
    border-color: var(--color-secondary);
+   @media (max-width: 767px) {
+    min-height: 4.5rem;
+    max-width: 15.2rem;
+   }
   }
  }
  &__select {
@@ -6937,7 +7008,8 @@ button {
     display: block;
    }
   }
-  &:has(.checkout__select_error) {
+  &:has(.checkout__select_error),
+  &:has(.checkout__select_work) {
    .checkout__select_list {
     top: 4.8rem;
    }
@@ -6945,6 +7017,9 @@ button {
   &:has(.checkout__select_title) {
    .checkout__select_list {
     top: 8rem;
+    @media (max-width: 767px) {
+     top: 7.7rem;
+    }
    }
   }
   &_error {
@@ -6977,6 +7052,11 @@ button {
     width: 2.4rem;
     height: 2.4rem;
     transition: all var(--duration-normal);
+   }
+   span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
    }
   }
   &_list {
@@ -7011,6 +7091,10 @@ button {
     font-size: 1.6rem;
     line-height: 2.4rem;
     font-weight: 500;
+    @media (max-width: 767px) {
+     font-size: 1.4rem;
+     line-height: 2.1rem;
+    }
    }
   }
   &_subtext {
@@ -7018,21 +7102,81 @@ button {
    font-size: 1.4rem;
    font-weight: 400;
    line-height: 1.7rem;
+   color: var(--color-secondary);
+   @media (max-width: 767px) {
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+    margin-top: 0.8rem;
+   }
+  }
+  &_pack {
+   margin-top: 1.6rem;
+   display: flex;
+   justify-content: space-between;
+   align-items: flex-start;
+   gap: 3rem;
+  }
+  &_image {
+   display: flex;
+   img {
+    width: 100%;
+   }
+  }
+  &_work {
+   font-size: 1.4rem;
+   line-height: 2.1rem;
+   width: 100%;
+   flex-shrink: 0;
+   max-width: max-content;
+   @media (max-width: 767px) {
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+   }
   }
  }
  &__delivery {
   @media (min-width: 768px) {
    margin-top: 1.6rem;
   }
+  &_list {
+   display: flex;
+   flex-direction: column;
+   gap: 4rem;
+   @media (max-width: 767px) {
+    gap: 2.4rem;
+   }
+  }
+  &_item {
+   &--city.disabled {
+    display: none;
+   }
+   .checkout__delivery_selects,
+   .checkout__rolled-delivery {
+    display: none;
+   }
+   &.checked {
+    .checkout__delivery_selects,
+    .checkout__rolled-delivery {
+     display: flex;
+    }
+   }
+  }
   &_case {
    display: flex;
    justify-content: space-between;
    align-items: center;
    gap: 1.2rem;
+   @media (max-width: 767px) {
+    gap: 1rem;
+   }
    p {
     color: var(--color-secondary);
     font-size: 1.4rem;
     line-height: 2.1rem;
+    @media (max-width: 767px) {
+     font-size: 1.2rem;
+     line-height: 1.8rem;
+    }
     &.green {
      color: var(--color-green);
     }
@@ -7042,6 +7186,9 @@ button {
    display: flex;
    align-items: center;
    gap: 1.2rem;
+   @media (max-width: 767px) {
+    gap: 1rem;
+   }
    input {
     cursor: pointer;
     flex-shrink: 0;
@@ -7079,13 +7226,185 @@ button {
     font-size: 1.8rem;
     line-height: 2.6rem;
     font-weight: 600;
+    @media (max-width: 767px) {
+     font-size: 1.6rem;
+     line-height: 2.4rem;
+    }
    }
   }
   &_selects {
-   margin: 4rem 0;
+   margin: 4rem 0 0;
    display: flex;
    flex-direction: column;
    gap: 2.4rem;
+   @media (max-width: 767px) {
+    margin: 2.4rem 0 0;
+   }
+   &.delivery-method {
+    .checkout__select_subtext,
+    .delivery-department,
+    .checkout__address-delivery {
+     display: none;
+    }
+    &.department {
+     .checkout__select_subtext,
+     .delivery-department {
+      display: block;
+     }
+    }
+    &.address {
+     .checkout__address-delivery {
+      display: flex;
+     }
+    }
+   }
+  }
+ }
+ &__address-delivery {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  &_error {
+   display: none;
+   margin-top: 0.8rem;
+   font-size: 1.4rem;
+   line-height: 2.1rem;
+   color: var(--color-red);
+  }
+  &_case {
+   display: flex;
+   gap: 2.4rem;
+   @media (max-width: 767px) {
+    flex-direction: column;
+   }
+  }
+  &_field {
+   display: flex;
+   flex-direction: column;
+   width: 100%;
+   position: relative;
+   &.error {
+    .checkout__address-delivery_error {
+     display: block;
+    }
+   }
+   input,
+   label {
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+   }
+
+   input {
+    max-width: 100%;
+    width: 100%;
+    border: 0.1rem solid var(--color-tertiary);
+    padding: 1.1rem 1.2rem;
+    background-color: var(--color-gray-l);
+
+    &::placeholder {
+     opacity: 0;
+    }
+   }
+
+   input {
+    min-height: 4.8rem;
+   }
+
+   label {
+    position: absolute;
+    left: 1.2rem;
+    top: 1.2rem;
+    transition: var(--duration-normal);
+    background-color: var(--color-gray-l);
+   }
+
+   input:focus,
+   input:focus-visible {
+    border-radius: 0px;
+   }
+
+   input:not(:placeholder-shown)~label,
+   input:focus~label,
+   input:focus-visible~label {
+    transform: translateY(-50%);
+    top: 0;
+    padding: 0 0.5rem;
+    font-size: 1rem;
+   }
+  }
+ }
+ &__rolled-delivery {
+  margin-top: 2.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  &_error {
+   display: none;
+   margin-top: 0.8rem;
+   font-size: 1.4rem;
+   line-height: 2.1rem;
+   color: var(--color-red);
+  }
+  &_case {
+   display: flex;
+   gap: 2.4rem;
+   @media (max-width: 767px) {
+    flex-direction: column;
+   }
+  }
+  &_field {
+   display: flex;
+   flex-direction: column;
+   width: 100%;
+   position: relative;
+   &.error {
+    .checkout__rolled-delivery_error {
+     display: block;
+    }
+   }
+   input,
+   label {
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+   }
+
+   input {
+    max-width: 100%;
+    width: 100%;
+    border: 0.1rem solid var(--color-tertiary);
+    padding: 1.1rem 1.2rem;
+    background-color: var(--color-gray-l);
+
+    &::placeholder {
+     opacity: 0;
+    }
+   }
+
+   input {
+    min-height: 4.8rem;
+   }
+
+   label {
+    position: absolute;
+    left: 1.2rem;
+    top: 1.2rem;
+    transition: var(--duration-normal);
+    background-color: var(--color-gray-l);
+   }
+
+   input:focus,
+   input:focus-visible {
+    border-radius: 0px;
+   }
+
+   input:not(:placeholder-shown)~label,
+   input:focus~label,
+   input:focus-visible~label {
+    transform: translateY(-50%);
+    top: 0;
+    padding: 0 0.5rem;
+    font-size: 1rem;
+   }
   }
  }
 }
@@ -7218,7 +7537,7 @@ button {
    max-width: 100%;
    width: 100%;
    border: 0.1rem solid var(--color-tertiary);
-   padding: 1.2rem;
+   padding: 1.1rem 1.2rem;
 
    &::placeholder {
     opacity: 0;
