@@ -25,6 +25,8 @@
 ### 24. [Wall product](https://handmade-hub.github.io/matiss/Layout/dist/wall-product.html)
 ### 25. [Wishlist empty](https://handmade-hub.github.io/matiss/Layout/dist/wishlist-empty.html)
 ### 26. [Wishlist](https://handmade-hub.github.io/matiss/Layout/dist/wishlist.html)
+### 26. [Email](https://handmade-hub.github.io/matiss/Layout/dist/email.html)
+### 26. [Email eng](https://handmade-hub.github.io/matiss/Layout/dist/email-eng.html)
 
 # DEV DOCUMENTATION
 
