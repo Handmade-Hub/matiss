@@ -1,4 +1,4 @@
-# PREVIEV PAGE`S LAYOUT
+# PREVIEW PAGE`S LAYOUT
 ### 1. [Home](https://handmade-hub.github.io/matiss/Layout/dist/index.html)
 ### 2. [Blog](https://handmade-hub.github.io/matiss/Layout/dist/blog.html)
 ### 3. [Catalog](https://handmade-hub.github.io/matiss/Layout/dist/catalog.html)
@@ -23,8 +23,8 @@
 ### 22. [Success](https://handmade-hub.github.io/matiss/Layout/dist/success.html)
 ### 23. [Videos](https://handmade-hub.github.io/matiss/Layout/dist/videos.html)
 ### 24. [Wall product](https://handmade-hub.github.io/matiss/Layout/dist/wall-product.html)
-### 25. [wishlist empty](https://handmade-hub.github.io/matiss/Layout/dist/wishlist-empty.html)
-### 26. [wishlist](https://handmade-hub.github.io/matiss/Layout/dist/wishlist.html)
+### 25. [Wishlist empty](https://handmade-hub.github.io/matiss/Layout/dist/wishlist-empty.html)
+### 26. [Wishlist](https://handmade-hub.github.io/matiss/Layout/dist/wishlist.html)
 
 # DEV DOCUMENTATION
 
