@@ -9,7 +9,7 @@
 ### 8. [Frames](https://handmade-hub.github.io/matiss/Layout/dist/frames.html)
 ### 9. [Gift product](https://handmade-hub.github.io/matiss/Layout/dist/frames.html)
 ### 10. [Information](https://handmade-hub.github.io/matiss/Layout/dist/information.html)
-### 11. [Information](https://handmade-hub.github.io/matiss/Layout/dist/moon.html)
+### 11. [Moon](https://handmade-hub.github.io/matiss/Layout/dist/moon.html)
 ### 12. [North glacier](https://handmade-hub.github.io/matiss/Layout/dist/north-glacier.html)
 ### 13. [Our team](https://handmade-hub.github.io/matiss/Layout/dist/our-team.html)
 ### 14. [Painting product](https://handmade-hub.github.io/matiss/Layout/dist/painting-product.html)
